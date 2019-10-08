@@ -8,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
+import YoutubeIcon from '@material-ui/icons/YouTube';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,12 +30,17 @@ export default function ButtonAppBar() {
   const classes = useStyles();
 
   const HOCIconButton = (props) => {
+    const handleSocialMediaClick = () => {
+      window.location.href = props.href;
+    }
+
     return (
-      <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+      <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleSocialMediaClick}>
         <props.Component />
       </IconButton>
     )
   }
+
 
   return (
     <div className={classes.root}>
@@ -44,9 +50,10 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Collingwood College Boat Club
           </Typography>
-          <HOCIconButton href="www.google.com" Component={FacebookIcon} />
-          <HOCIconButton Component={TwitterIcon} />
-          <HOCIconButton Component={InstagramIcon} />
+          <HOCIconButton Component={FacebookIcon} href="https://www.facebook.com/CollingwoodCollegeBoatClub/" />
+          <HOCIconButton Component={TwitterIcon} href="https://twitter.com/ccbc_rowing" />
+          <HOCIconButton Component={InstagramIcon} href="https://www.instagram.com/ccbc_durham/" />
+          <HOCIconButton Component={YoutubeIcon} href="https://www.youtube.com/channel/UCRFds8sdfgcGvmCdm6F70sg" />
         </Toolbar>
       </AppBar>
     </div>
