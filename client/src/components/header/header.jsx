@@ -9,6 +9,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import YoutubeIcon from '@material-ui/icons/YouTube';
+import { Drawer } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,16 +27,22 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function ButtonAppBar() {
+const Header = () => {
   const classes = useStyles();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    console.log(mobileOpen)
+    setMobileOpen(!mobileOpen);
+  };
 
   const HOCIconButton = (props) => {
     const handleSocialMediaClick = () => {
-      window.location.href = props.href;
+      props.href && (window.location.href = props.href)
     }
 
     return (
-      <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleSocialMediaClick}>
+      <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={props.href ? handleSocialMediaClick : props.onClick}>
         <props.Component />
       </IconButton>
     )
@@ -46,7 +53,7 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
-            <HOCIconButton Component={MenuIcon} />
+          <HOCIconButton Component={MenuIcon} onClick={handleDrawerToggle} />
           <Typography variant="h6" className={classes.title}>
             Collingwood College Boat Club
           </Typography>
@@ -56,6 +63,9 @@ export default function ButtonAppBar() {
           <HOCIconButton Component={YoutubeIcon} href="https://www.youtube.com/channel/UCRFds8sdfgcGvmCdm6F70sg" />
         </Toolbar>
       </AppBar>
+      <Drawer mobileOpen={mobileOpen} closeDrawer={handleDrawerToggle} />
     </div>
   );
 }
+
+export default Header
