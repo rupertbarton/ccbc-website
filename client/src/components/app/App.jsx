@@ -1,20 +1,20 @@
 import React from 'react';
 import './App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Header from '../header/Header'
+import Header from '../navigation/Header'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import routes from "./routes"
-import AuthenticatedRoute from './AuthenticatedRoute';
+import routes from "../navigation/routes"
+import AuthenticatedRoute from '../navigation/AuthenticatedRoute';
 
 const App = () => {
   return (
     <>
+      <Router>
       <CssBaseline />
       <Header />
-      <Router>
         <Switch>
           {routes.map((route) => (
-            <Route exact path={route.path} render={ () => <AuthenticatedRoute component={route.component} />} />
+            <Route exact key={route.name} path={route.path} render={ () => <AuthenticatedRoute component={route.component} />} />
           ))}
         </Switch>
       </Router>
