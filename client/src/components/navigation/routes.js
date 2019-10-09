@@ -1,5 +1,12 @@
 import React from 'react'
+import Home from "../content/home/Home"
 import About from "../content/about/About"
+import TheClub from "../content/about/TheClub"
+import ExecutiveComittee from "../content/about/ExecutiveComittee"
+import Races from "../content/races/Races"
+import Upcoming from "../content/races/Upcoming"
+import Results from "../content/races/Results"
+import Safety from "../content/safety/Safety"
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
@@ -10,7 +17,7 @@ export default [
     name: "Home",
     path: "/",
     icon: <HomeIcon />,
-    component: About,
+    component: Home,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,
@@ -27,7 +34,7 @@ export default [
       {
         name: "The Club",
         path: "/about/club",
-        component: About,
+        component: TheClub,
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
@@ -35,7 +42,7 @@ export default [
       {
         name: "Executive Comittee",
         path: "/about/executiveComittee",
-        component: About,
+        component: ExecutiveComittee,
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
@@ -46,7 +53,7 @@ export default [
     name: "Races",
     path: "/races",
     icon: <RowingIcon />,
-    component: About,
+    component: Races,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,
@@ -54,7 +61,7 @@ export default [
       {
         name: "Upcoming",
         path: "/races/upcoming",
-        component: About,
+        component: Upcoming,
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
@@ -62,7 +69,7 @@ export default [
       {
         name: "Results",
         path: "/results",
-        component: About,
+        component: Results,
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
@@ -73,7 +80,7 @@ export default [
     name: "Safety",
     path: "/safety",
     icon: <VerifiedUserOutlinedIcon />,
-    component: About,
+    component: Safety,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,
