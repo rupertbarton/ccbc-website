@@ -1,5 +1,5 @@
 import React from 'react'
-import About from "../about/About"
+import About from "../content/about/About"
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';

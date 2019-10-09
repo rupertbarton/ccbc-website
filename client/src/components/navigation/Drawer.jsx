@@ -64,6 +64,7 @@ const DrawerComponent = (props) => {
             paper: classes.drawerPaper,
           }}
           variant="permanent"
+          position="static"
           open
         >
           {drawerContent(false)}

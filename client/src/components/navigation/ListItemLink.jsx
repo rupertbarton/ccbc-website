@@ -26,7 +26,7 @@ const ListItemLink = (props) => {
 
   return (
     <>
-      <li className={props.className} onClick={props.closeDrawer}>
+      <li className={props.className} onClick={props.closeDrawer ? props.closeDrawer : null}>
         <ListItem button component={renderLink}>
           {props.icon ? <ListItemIcon>{props.icon}</ListItemIcon> : null}
           <ListItemText primary={props.name} />

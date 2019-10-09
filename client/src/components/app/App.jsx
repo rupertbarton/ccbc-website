@@ -3,19 +3,28 @@ import './App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from '../navigation/Header'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import routes from "../navigation/routes"
-import AuthenticatedRoute from '../navigation/AuthenticatedRoute';
+import allRoutes from "../navigation/routes"
+import AuthenticateRoute from '../navigation/AuthenticateRoute';
+
+const mapOverRoutes = (routes) => (
+  <>
+    {routes.map((route) => (
+      <div key={route.name}>
+        <Route exact  path={route.path} render={() => <AuthenticateRoute {...route} />} />
+        {route.subRoutes && mapOverRoutes(route.subRoutes)}
+      </div>
+    ))}
+  </>
+)
 
 const App = () => {
   return (
     <>
       <Router>
-      <CssBaseline />
-      <Header />
+        <CssBaseline />
+        <Header />
         <Switch>
-          {routes.map((route) => (
-            <Route exact key={route.name} path={route.path} render={ () => <AuthenticatedRoute component={route.component} />} />
-          ))}
+          {mapOverRoutes(allRoutes)}
         </Switch>
       </Router>
     </>

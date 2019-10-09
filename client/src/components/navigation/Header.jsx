@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    background: 'linear-gradient(90deg, #FF0000 30%, #C00000 90%)',
+    background: 'linear-gradient(90deg, #D00000 30%, #B00000 70%)',
   },
   menuButton: {
     marginRight: theme.spacing(2),
