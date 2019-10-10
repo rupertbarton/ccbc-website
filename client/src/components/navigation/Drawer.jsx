@@ -6,6 +6,7 @@ import List from '@material-ui/core/List';
 import { makeStyles } from '@material-ui/core/styles';
 import routes from './routes'
 import ListItemLink from './ListItemLink'
+import Login from './Login'
 
 const drawerWidth = 240;
 
@@ -36,6 +37,7 @@ const DrawerComponent = (props) => {
             <Divider />
           </div>
         ))}
+        <Login login={props.login} currentUser={props.currentUser} logout={props.logout} />
       </List>
     </div>
   );

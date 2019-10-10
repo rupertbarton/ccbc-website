@@ -1,15 +1,15 @@
-import * as actions from '../actions/helloWorld';
+import * as actions from '../actions/auth';
 
 const INITIAL_STATE = {
-  hello: null
+  currentUser: null
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case actions.HELLO_WORLD:
+    case actions.UPDATE_CURRENT_USER:
       return {
         ...state,
-        hello: "World"
+        currentUser: action.payload
       };
 
       default:
