@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const Header = () => {
+const Header = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
@@ -68,8 +68,8 @@ const Header = () => {
       <AppBar className={classes.appBar} position="fixed">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleDrawerToggle}>
-        <MenuIcon />
-      </IconButton>
+            <MenuIcon />
+          </IconButton>
           <Typography variant="h6" className={classes.title}>
             {isMobile ? <>CCBC</> : <>Collingwood College Boat Club</>}
           </Typography>
@@ -79,7 +79,7 @@ const Header = () => {
           <SocialMediaIcon Component={YoutubeIcon} aria-label="youtube" href="https://www.youtube.com/channel/UCRFds8sdfgcGvmCdm6F70sg" />
         </Toolbar>
       </AppBar>
-      <Drawer mobileOpen={mobileOpen} closeDrawer={handleDrawerToggle} />
+      <Drawer mobileOpen={mobileOpen} closeDrawer={handleDrawerToggle} login={props.login} currentUser={props.currentUser} logout={props.logout} />
     </div>
   );
 }
