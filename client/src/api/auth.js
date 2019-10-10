@@ -3,16 +3,11 @@ import "firebase/auth";
 import { updateCurrentUser } from '../actions/auth'
 
 export const facebookLogin = () => {
-  return auth().setPersistence(auth.Auth.Persistence.LOCAL).then(() => {
     const provider = new auth.FacebookAuthProvider();
     return auth().signInWithPopup(provider)
     .catch((err) => {
       console.error(err)
     })
-  })
-  .catch((err) => {
-console.error(err)
-  })
 };
 
 export const logout = () => {
