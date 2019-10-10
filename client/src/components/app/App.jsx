@@ -5,6 +5,7 @@ import Header from '../navigation/headerContainer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import allRoutes from "../navigation/routes"
 import AuthenticateRoute from '../navigation/AuthenticateRoute';
+import { auth } from "firebase/app";
 
 const mapOverRoutes = (routes) => (
   <>
@@ -17,7 +18,15 @@ const mapOverRoutes = (routes) => (
   </>
 )
 
-const App = () => {
+const App = (props) => {
+  auth().onAuthStateChanged(user => {
+    if (user) {
+      props.updateCurrentUser(user)
+    } else {
+      props.updateCurrentUser(null)
+    }
+  });
+
   return (
     <>
       <Router>

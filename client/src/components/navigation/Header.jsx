@@ -11,6 +11,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import YoutubeIcon from '@material-ui/icons/YouTube';
 import Drawer from './Drawer'
+import { facebookLogin, logout } from '../../api/auth'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -79,7 +80,7 @@ const Header = (props) => {
           <SocialMediaIcon Component={YoutubeIcon} aria-label="youtube" href="https://www.youtube.com/channel/UCRFds8sdfgcGvmCdm6F70sg" />
         </Toolbar>
       </AppBar>
-      <Drawer mobileOpen={mobileOpen} closeDrawer={handleDrawerToggle} login={props.login} currentUser={props.currentUser} logout={props.logout} />
+      <Drawer mobileOpen={mobileOpen} closeDrawer={handleDrawerToggle} login={facebookLogin} currentUser={props.currentUser} logout={logout} />
     </div>
   );
 }

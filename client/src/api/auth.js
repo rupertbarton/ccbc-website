@@ -2,21 +2,23 @@ import { auth } from "firebase/app";
 import "firebase/auth";
 import { updateCurrentUser } from '../actions/auth'
 
-export const facebookLogin = () => dispatch => {
-  const provider = new auth.FacebookAuthProvider();
-  return auth().signInWithPopup(provider).then((result) => {
-    dispatch(updateCurrentUser(auth().currentUser))
+export const facebookLogin = () => {
+  return auth().setPersistence(auth.Auth.Persistence.LOCAL).then(() => {
+    const provider = new auth.FacebookAuthProvider();
+    return auth().signInWithPopup(provider)
+    .catch((err) => {
+      console.error(err)
+    })
   })
   .catch((err) => {
-    console.error(err)
+console.error(err)
   })
 };
 
-export const logout = () => dispatch => {
-  return auth().signOut().then(() => {
-    dispatch(updateCurrentUser(null))
-  })
+export const logout = () => {
+  return auth().signOut()
   .catch((err) => {
+    console.error(err)
   })
 };
 
