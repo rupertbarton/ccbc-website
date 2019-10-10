@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Header from '../navigation/Header'
+import Header from '../navigation/headerContainer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import allRoutes from "../navigation/routes"
 import AuthenticateRoute from '../navigation/AuthenticateRoute';

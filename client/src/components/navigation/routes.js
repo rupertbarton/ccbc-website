@@ -7,7 +7,6 @@ import Races from "../content/races/Races"
 import Upcoming from "../content/races/Upcoming"
 import Results from "../content/races/Results"
 import Safety from "../content/safety/Safety"
-import HelloWorld from "../content/helloWorld/helloWorldContainer"
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
@@ -82,15 +81,6 @@ export default [
     path: "/safety",
     icon: <VerifiedUserOutlinedIcon />,
     component: Safety,
-    requiresMember: false,
-    requiresExec: false,
-    requiresCaptain: false,
-  },
-  {
-    name: "HelloWorld",
-    path: "/helloWorld",
-    icon: <VerifiedUserOutlinedIcon />,
-    component: HelloWorld,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,

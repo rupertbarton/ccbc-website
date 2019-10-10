@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import helloWorld from './helloWorld'
+import auth from './auth'
 
 
 const allReducers = combineReducers({
-  helloWorld
+  auth
 });
 
 const rootReducer = (state, action) => {
