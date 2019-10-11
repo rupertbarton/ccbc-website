@@ -1,4 +1,4 @@
-import { initializeApp, analytics } from "firebase/app";
+import firebase from 'firebase'
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -13,5 +13,8 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 
-export default initializeApp(firebaseConfig);
-// analytics();
+// firebase.analytics();
+
+const app = firebase.initializeApp(firebaseConfig);
+export const functions = firebase.app().functions('europe-west2')
+export default app

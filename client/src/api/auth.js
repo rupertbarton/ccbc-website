@@ -1,10 +1,10 @@
 import { auth } from "firebase/app";
 import "firebase/auth";
-import { updateCurrentUser } from '../actions/auth'
+import { functions } from './firebaseApp'
 
 export const facebookLogin = () => {
-    const provider = new auth.FacebookAuthProvider();
-    return auth().signInWithPopup(provider)
+  const provider = new auth.FacebookAuthProvider();
+  return auth().signInWithPopup(provider)
     .catch((err) => {
       console.error(err)
     })
@@ -12,10 +12,17 @@ export const facebookLogin = () => {
 
 export const logout = () => {
   return auth().signOut()
-  .catch((err) => {
-    console.error(err)
-  })
+    .catch((err) => {
+      console.error(err)
+    })
 };
+
+export const addCustomClaims = () => {
+  return functions.httpsCallable('auth-addCustomClaims')({})
+    .then(() => {
+      auth().currentUser.getIdToken(true)
+    })
+}
 
 // import axios from 'axios';
   // export const microsoftLogin = () => dispatch => {
@@ -32,7 +39,7 @@ export const logout = () => {
       //   .catch((err) => {
       //   })
       // };
-      
+
       // const getMicrosoftProfilePicture = (bearerToken) => {
       // axios.get("https://graph.microsoft.com/v1.0/me/photo", {headers: {Authorization: bearerToken}}).then((result) => {
       //   console.log("success")
