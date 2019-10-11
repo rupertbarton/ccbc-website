@@ -17,13 +17,6 @@ export const logout = () => {
     })
 };
 
-export const addCustomClaims = () => {
-  return functions.httpsCallable('auth-addCustomClaims')({})
-    .then(() => {
-      auth().currentUser.getIdToken(true)
-    })
-}
-
 // import axios from 'axios';
   // export const microsoftLogin = () => dispatch => {
       //   const provider = new auth.OAuthProvider('microsoft.com');

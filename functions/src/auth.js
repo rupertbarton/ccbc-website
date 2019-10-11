@@ -1,9 +1,8 @@
 const functions = require('firebase-functions').region('europe-west2');
 const admin = require('firebase-admin')
 
-exports.addCustomClaims = functions.https.onCall((data, context) => {
-  return admin.firestore().collection('users').doc(context.auth.uid).get().then((snapshot) => {
-    user = snapshot.data()
+exports.addCustomClaims = functions.firestore.document('users/{userId}').onWrite((change, context) => {
+  let user = change.after.data()
     additionalClaims = {
       isAdmin: user.isAdmin,
       isCaptain: user.isCaptain,
@@ -11,7 +10,5 @@ exports.addCustomClaims = functions.https.onCall((data, context) => {
       isMember: user.isMember,
       roleName: user.roleName
     }
-    admin.auth().setCustomUserClaims(context.auth.uid, additionalClaims)
-    return
-  })
+    admin.auth().setCustomUserClaims(context.params.userId, additionalClaims)
 });
