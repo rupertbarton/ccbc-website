@@ -6,7 +6,7 @@ const Home = () => {
     <Typography>
 Welcome to CCBC you muppets
     </Typography>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

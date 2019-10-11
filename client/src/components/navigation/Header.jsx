@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import AppBar from '@material-ui/core/AppBar';
@@ -10,8 +11,8 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import YoutubeIcon from '@material-ui/icons/YouTube';
-import Drawer from './Drawer'
-import { facebookLogin, logout } from '../../api/auth'
+import Drawer from './Drawer';
+import { facebookLogin, logout } from '../../api/auth';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,8 +40,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-
-const Header = (props) => {
+const Header = props => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
@@ -51,19 +51,18 @@ const Header = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const SocialMediaIcon = (props) => {
+  const SocialMediaIcon = props => {
     const handleSocialMediaClick = () => {
-      const win = window.open( props.href, "_blank")
+      const win = window.open(props.href, '_blank');
       win.focus();
-    }
+    };
 
     return (
       <IconButton edge="start" className={classes.appBarIcon} color="inherit" aria-label="menu" onClick={handleSocialMediaClick}>
         <props.Component />
       </IconButton>
-    )
-  }
-
+    );
+  };
 
   return (
     <div className={classes.root}>
@@ -84,6 +83,11 @@ const Header = (props) => {
       <Drawer mobileOpen={mobileOpen} closeDrawer={handleDrawerToggle} login={facebookLogin} currentUser={props.currentUser} logout={logout} />
     </div>
   );
-}
+};
 
-export default Header
+Header.propTypes = {
+  currentUser: PropTypes.object,
+  href: PropTypes.string
+};
+
+export default Header;

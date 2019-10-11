@@ -45,7 +45,7 @@ const Safety = () => {
            praesent semper feugiat nibh.
 
     </Typography>
-  )
-}
+  );
+};
 
-export default Safety
+export default Safety;

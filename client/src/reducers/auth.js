@@ -6,13 +6,13 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case actions.UPDATE_CURRENT_USER:
-      return {
-        ...state,
-        currentUser: action.payload
-      };
+  case actions.UPDATE_CURRENT_USER:
+    return {
+      ...state,
+      currentUser: action.payload
+    };
 
-      default:
-        return state;
-      }
-    }
+  default:
+    return state;
+  }
+};

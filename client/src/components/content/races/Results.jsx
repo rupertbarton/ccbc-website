@@ -7,7 +7,7 @@ const Results = () => {
 Yay CCBC
 
     </Typography>
-  )
-}
+  );
+};
 
-export default Results
+export default Results;
