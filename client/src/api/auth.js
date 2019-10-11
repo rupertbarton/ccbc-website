@@ -1,6 +1,5 @@
 import { auth } from "firebase/app";
 import "firebase/auth";
-import { functions } from './firebaseApp'
 
 export const facebookLogin = () => {
   const provider = new auth.FacebookAuthProvider();

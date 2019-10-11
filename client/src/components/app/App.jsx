@@ -11,7 +11,7 @@ const mapOverRoutes = (routes) => (
   <>
     {routes.map((route) => (
       <div key={route.name}>
-        <Route exact key={route.name} path={route.path} render={() => <AuthenticateRoute route={route} />} />
+        <Route exact path={route.path} render={() => <AuthenticateRoute route={route} />} />
         {route.subRoutes && mapOverRoutes(route.subRoutes)}
       </div>
     ))}
@@ -44,7 +44,6 @@ const App = (props) => {
         <Header />
         <Switch>
           {mapOverRoutes(allRoutes)}
-          <Route from="*" to="/" />
         </Switch>
       </Router>
     </>
