@@ -53,7 +53,8 @@ const Header = (props) => {
 
   const SocialMediaIcon = (props) => {
     const handleSocialMediaClick = () => {
-      props.href && (window.location.href = props.href)
+      const win = window.open( props.href, "_blank")
+      win.focus();
     }
 
     return (
