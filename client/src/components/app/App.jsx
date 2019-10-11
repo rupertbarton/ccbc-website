@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import allRoutes from "../navigation/routes"
 import AuthenticateRoute from '../navigation/authenticateRouteContainer';
 import { auth } from "firebase/app";
+import firebaseApp from '../../api/firebaseApp'
 
 const mapOverRoutes = (routes) => (
   <>
