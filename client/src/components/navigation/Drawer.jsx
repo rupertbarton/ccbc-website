@@ -33,7 +33,7 @@ const DrawerComponent = (props) => {
       <List>
         {routes.map((route) => (
           <div key={route.name}>
-            <ListItemLink  {...route} closeDrawer={isMobile && props.closeDrawer} />
+            <ListItemLink  route={route} currentUser={props.currentUser} closeDrawer={isMobile && props.closeDrawer} />
             <Divider />
           </div>
         ))}
