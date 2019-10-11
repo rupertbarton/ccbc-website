@@ -7,7 +7,7 @@ import Races from "../content/races/Races"
 import Upcoming from "../content/races/Upcoming"
 import Results from "../content/races/Results"
 import Safety from "../content/safety/Safety"
-import HelloWorld from "../content/helloWorld/helloWorldContainer"
+import PrivacyPolicy from "../content/privacyPolicy/PrivacyPolicy"
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
@@ -87,10 +87,10 @@ export default [
     requiresCaptain: false,
   },
   {
-    name: "HelloWorld",
-    path: "/helloWorld",
-    icon: <VerifiedUserOutlinedIcon />,
-    component: HelloWorld,
+    name: "Privacy",
+    path: "/privacy",
+    icon: null,
+    component: PrivacyPolicy,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,

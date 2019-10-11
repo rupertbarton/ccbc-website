@@ -11,6 +11,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import YoutubeIcon from '@material-ui/icons/YouTube';
 import Drawer from './Drawer'
+import { facebookLogin, logout } from '../../api/auth'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const Header = () => {
+const Header = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
@@ -52,7 +53,8 @@ const Header = () => {
 
   const SocialMediaIcon = (props) => {
     const handleSocialMediaClick = () => {
-      props.href && (window.location.href = props.href)
+      const win = window.open( props.href, "_blank")
+      win.focus();
     }
 
     return (
@@ -68,8 +70,8 @@ const Header = () => {
       <AppBar className={classes.appBar} position="fixed">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleDrawerToggle}>
-        <MenuIcon />
-      </IconButton>
+            <MenuIcon />
+          </IconButton>
           <Typography variant="h6" className={classes.title}>
             {isMobile ? <>CCBC</> : <>Collingwood College Boat Club</>}
           </Typography>
@@ -79,7 +81,7 @@ const Header = () => {
           <SocialMediaIcon Component={YoutubeIcon} aria-label="youtube" href="https://www.youtube.com/channel/UCRFds8sdfgcGvmCdm6F70sg" />
         </Toolbar>
       </AppBar>
-      <Drawer mobileOpen={mobileOpen} closeDrawer={handleDrawerToggle} />
+      <Drawer mobileOpen={mobileOpen} closeDrawer={handleDrawerToggle} login={facebookLogin} currentUser={props.currentUser} logout={logout} />
     </div>
   );
 }

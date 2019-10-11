@@ -5,6 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import isAuthenticated from '../../util/isAuthenticated'
 
 const useStyles = makeStyles(theme => ({
   subRoute: {
@@ -19,28 +20,33 @@ const ListItemLink = (props) => {
   const renderLink = React.useMemo(
     () =>
       React.forwardRef((itemProps, ref) => (
-        <RouterLink to={props.path} {...itemProps} innerRef={ref} />
+        <RouterLink to={props.route.path} {...itemProps} innerRef={ref} />
       )),
-    [props.path],
+    [props.route.path],
   );
 
+  if (isAuthenticated(props.currentUser, props.route)) {
   return (
     <>
       <li className={props.className} onClick={props.closeDrawer ? props.closeDrawer : null}>
         <ListItem button component={renderLink}>
-          {props.icon ? <ListItemIcon>{props.icon}</ListItemIcon> : null}
-          <ListItemText primary={props.name} />
+          {props.route.icon ? <ListItemIcon>{props.route.icon}</ListItemIcon> : null}
+          <ListItemText primary={props.route.name} />
         </ListItem>
       </li>
       {
-        props.subRoutes && props.subRoutes.map((subRoute) => {
+        props.route.subRoutes && props.route.subRoutes.map((subRoute) => {
           return (
-            <ListItemLink key={subRoute.name} className={classes.subRoute} icon={<NavigateNextIcon/>} closeDrawer={props.closeDrawer} {...subRoute}  />
+            <ListItemLink key={subRoute.name} className={classes.subRoute}  closeDrawer={props.closeDrawer} route={{...subRoute, icon:<NavigateNextIcon/>}}  />
           )
         })
       }
     </>
   );
+    }
+    else {
+      return <></>
+    }
 }
 
 export default ListItemLink

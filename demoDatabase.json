@@ -1,0 +1,26 @@
+{
+  "users": {
+    "id": {
+      "name": "Rupert Barton",
+      "isMember": true, //Can view their training schedule, can view boat booking, can report boat damages
+      //When you 1st login to site you are not a member, but your name gets put onto a list of people who have signed up that aren't members.
+      //In order to become a member an exec member needs to come on the site and approve you to be added.
+
+      "isExec": true, //Can book out boats, and maybe modify website?? Can add/remove members
+      "isClubCaptain": true,  //Can assign exec members, can modify website
+      "isAdmin": true,  //Can do everything, and club captain can not revoke this role
+      "roleName": "System Admin" //Could be Club Captain, Women's Captain, Member, etc... so a user can view their own role and therefore their permissions
+    }
+  },
+  "roles": {  //Purpose of this is for the page where the captain needs to update the roles,
+              //and also so throughtout the website, wherever the club captain/another role is mentioned, we can use this variable from the database.
+    "clubCaptain": {
+      "name": "Club Captain",
+      "user": "Nathaniel Ayers"
+    }
+  },
+  "pages": {
+    "pageName": "<p>Bla di bla di bla di bla<p/>",
+    "Races": "<p>Something about races</p>"
+  }
+}
