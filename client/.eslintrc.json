@@ -90,6 +90,7 @@
       }
     ],
     "react/jsx-pascal-case": "error",
-    "react/jsx-boolean-value": ["error", "never"]
+    "react/jsx-boolean-value": ["error", "never"],
+    "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "always" }]
   }
 }

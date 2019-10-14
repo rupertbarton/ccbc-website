@@ -12,6 +12,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import RowingIcon from '@material-ui/icons/Rowing';
+import CreateIcon from '@material-ui/icons/Create';
 
 export default [
   {
@@ -50,6 +51,7 @@ export default [
         subRoutes: [{
           name: 'Update Executive Comittee',
           path: '/about/executiveComittee/update',
+          icon: <CreateIcon />,
           component: ExecutiveComittee,
           requiresMember: false,
           requiresExec: false,

@@ -19,15 +19,18 @@ const Login = props => {
 
   return props.currentUser ? (
     <li >
-      <ListItem button onClick={props.logout}>
-        <ListItemIcon>{props.currentUser.photoURL ? <img className={classes.roundedImage} src={props.currentUser.photoURL}/> : <PersonIcon />}</ListItemIcon>
+      <ListItem button
+        onClick={props.logout}>
+        <ListItemIcon>{props.currentUser.photoURL ? <img className={classes.roundedImage}
+          src={props.currentUser.photoURL}/> : <PersonIcon />}</ListItemIcon>
         <ListItemText primary={'Sign out'} />
       </ListItem>
     </li>
   ) :
     (
       <li>
-        <ListItem button onClick={props.login}>
+        <ListItem button
+          onClick={props.login}>
           <ListItemIcon><PersonIcon /></ListItemIcon>
           <ListItemText primary={'Sign in'} />
         </ListItem>
