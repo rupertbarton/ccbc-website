@@ -12,7 +12,7 @@ const About = () => {
            praesent semper feugiat nibh.
 
     </Typography>
-  )
-}
+  );
+};
 
-export default About
+export default About;

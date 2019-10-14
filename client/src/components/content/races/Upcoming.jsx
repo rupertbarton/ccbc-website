@@ -19,7 +19,7 @@ Some upcoming races and so on
 Some upcoming races and so on
 
     </Typography>
-  )
-}
+  );
+};
 
-export default About
+export default About;

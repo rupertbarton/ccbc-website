@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -15,16 +15,16 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
-const Content = (props) => {
+const Content = props => {
   const classes = useStyles();
 
   return (
     <div>
-    <Paper className={classes.root}>
-          <props.route.component/>
-    </Paper>
+      <Paper className={classes.root}>
+        <props.route.component/>
+      </Paper>
     </div>
-  )
-}
+  );
+};
 
-export default Content
+export default Content;

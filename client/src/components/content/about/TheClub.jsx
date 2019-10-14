@@ -19,7 +19,7 @@ const TheClub = () => {
            praesent semper feugiat nibh.
 
     </Typography>
-  )
-}
+  );
+};
 
-export default TheClub
+export default TheClub;

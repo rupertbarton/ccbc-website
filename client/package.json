@@ -21,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npx eslint {src,e2e}/**/*.{js,jsx}",
+    "lint-fix": "npx eslint {src,e2e}/**/*.{js,jsx} --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-plugin-react": "^7.16.0"
   }
 }

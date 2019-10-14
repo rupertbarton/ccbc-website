@@ -1,22 +1,26 @@
 export default (user, page) => {
-  
+  if (page.name === 'Update Executive Comittee'){
+    console.log(user);
+    console.log(page);
+  }
+
   //If page doesn't require authentication, return true.
   if (!(page.requiresCaptain || page.requiresExec || page.requiresMember)) {
-    return true
+    return true;
   }
   //If user isn't logged in, return false as all routes after this require being logged in.
-  else if(!user) return false
+  else if(!user) return false;
 
-  else if (user.isAdmin) return true
+  else if (user.isAdmin) return true;
 
   else if (page.requiresCaptain && !user.isCaptain) {
-    return false
+    return false;
   }
   else if (page.requiresExec && !user.isExec) {
-    return false
+    return false;
   }
   else if (page.requiresMember && !user.isMember) {
-    return false
+    return false;
   }
-  else return true
-}
+  else return true;
+};

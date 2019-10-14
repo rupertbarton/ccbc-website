@@ -6,7 +6,7 @@ const Races = () => {
     <Typography>
 Some stuff about racing
     </Typography>
-  )
-}
+  );
+};
 
-export default Races
+export default Races;

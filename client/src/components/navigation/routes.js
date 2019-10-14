@@ -1,13 +1,13 @@
-import React from 'react'
-import Home from "../content/home/Home"
-import About from "../content/about/About"
-import TheClub from "../content/about/TheClub"
-import ExecutiveComittee from "../content/about/ExecutiveComittee"
-import Races from "../content/races/Races"
-import Upcoming from "../content/races/Upcoming"
-import Results from "../content/races/Results"
-import Safety from "../content/safety/Safety"
-import PrivacyPolicy from "../content/privacyPolicy/PrivacyPolicy"
+import React from 'react';
+import Home from '../content/home/Home';
+import About from '../content/about/About';
+import TheClub from '../content/about/TheClub';
+import ExecutiveComittee from '../content/about/ExecutiveComittee';
+import Races from '../content/races/Races';
+import Upcoming from '../content/races/Upcoming';
+import Results from '../content/races/Results';
+import Safety from '../content/safety/Safety';
+import PrivacyPolicy from '../content/privacyPolicy/PrivacyPolicy';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
@@ -15,8 +15,8 @@ import RowingIcon from '@material-ui/icons/Rowing';
 
 export default [
   {
-    name: "Home",
-    path: "/",
+    name: 'Home',
+    path: '/',
     icon: <HomeIcon />,
     component: Home,
     requiresMember: false,
@@ -24,8 +24,8 @@ export default [
     requiresCaptain: false,
   },
   {
-    name: "About",
-    path: "/about",
+    name: 'About',
+    path: '/about',
     icon: <InfoIcon />,
     component: About,
     requiresMember: false,
@@ -33,26 +33,34 @@ export default [
     requiresCaptain: false,
     subRoutes: [
       {
-        name: "The Club",
-        path: "/about/club",
+        name: 'The Club',
+        path: '/about/club',
         component: TheClub,
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
       },
       {
-        name: "Executive Comittee",
-        path: "/about/executiveComittee",
+        name: 'Executive Comittee',
+        path: '/about/executiveComittee',
         component: ExecutiveComittee,
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
+        subRoutes: [{
+          name: 'Update Executive Comittee',
+          path: '/about/executiveComittee/update',
+          component: ExecutiveComittee,
+          requiresMember: false,
+          requiresExec: false,
+          requiresCaptain: true,
+        }]
       }
     ]
   },
   {
-    name: "Races",
-    path: "/races",
+    name: 'Races',
+    path: '/races',
     icon: <RowingIcon />,
     component: Races,
     requiresMember: false,
@@ -60,16 +68,16 @@ export default [
     requiresCaptain: false,
     subRoutes: [
       {
-        name: "Upcoming",
-        path: "/races/upcoming",
+        name: 'Upcoming',
+        path: '/races/upcoming',
         component: Upcoming,
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
       },
       {
-        name: "Results",
-        path: "/results",
+        name: 'Results',
+        path: '/results',
         component: Results,
         requiresMember: false,
         requiresExec: false,
@@ -78,8 +86,8 @@ export default [
     ]
   },
   {
-    name: "Safety",
-    path: "/safety",
+    name: 'Safety',
+    path: '/safety',
     icon: <VerifiedUserOutlinedIcon />,
     component: Safety,
     requiresMember: false,
@@ -87,12 +95,12 @@ export default [
     requiresCaptain: false,
   },
   {
-    name: "Privacy",
-    path: "/privacy",
+    name: 'Privacy',
+    path: '/privacy',
     icon: null,
     component: PrivacyPolicy,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,
   },
-]
+];
