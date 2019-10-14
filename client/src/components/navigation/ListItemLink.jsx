@@ -38,7 +38,7 @@ const ListItemLink = props => {
         {
           props.route.subRoutes && props.route.subRoutes.map(subRoute => {
             return (
-              <ListItemLink key={subRoute.name} className={classes.subRoute}  closeDrawer={props.closeDrawer} route={{ ...subRoute, icon: <NavigateNextIcon/> }}  />
+              <ListItemLink key={subRoute.name} className={classes.subRoute}  closeDrawer={props.closeDrawer} currentUser={props.currentUser} route={{ ...subRoute, icon: <NavigateNextIcon/> }}  />
             );
           })
         }

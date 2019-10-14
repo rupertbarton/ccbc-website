@@ -47,6 +47,14 @@ export default [
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
+        subRoutes: [{
+          name: 'Update Executive Comittee',
+          path: '/about/executiveComittee/update',
+          component: ExecutiveComittee,
+          requiresMember: false,
+          requiresExec: false,
+          requiresCaptain: true,
+        }]
       }
     ]
   },
