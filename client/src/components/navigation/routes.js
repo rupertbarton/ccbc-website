@@ -7,7 +7,7 @@ import Races from '../content/races/Races';
 import Upcoming from '../content/races/Upcoming';
 import Results from '../content/races/Results';
 import Safety from '../content/safety/Safety';
-import ModifyExec from '../content/modifyExec/modifyExecContainerPage';
+import ModifyExec from '../content/modifyExec/modifyExecPageContainer';
 import PrivacyPolicy from '../content/privacyPolicy/PrivacyPolicy';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';

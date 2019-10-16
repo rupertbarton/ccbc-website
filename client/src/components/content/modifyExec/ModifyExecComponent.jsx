@@ -24,8 +24,9 @@ const ModifyExecComponent = props => {
       null);
 
   const handleChange = value => {
+    console.log(value)
     setSelectedUsers(value);
-    props.onChange(props.execRole.id, value ? value.map(user => user.value) : [])
+    props.onChange(props.execRole.id, value ? value.map(user => ({userId: user.value, displayName: user.label})) : [])
   };
 
   return (

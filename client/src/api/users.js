@@ -1,5 +1,5 @@
-import firebase from './firebaseApp';
-import toCamelCase from '../util/toCamelCase';
+import firebase, {functions} from './firebaseApp';
+
 let db = firebase.firestore();
 
 export const fetchMembers = () => {
@@ -22,12 +22,6 @@ export const fetchExec = () => {
   });
 };
 
-export const setExecRole = (role, user) => {
-  let batch = db.batch();
-  batch.set(db.collection('roles').doc(toCamelCase(role.name), role));
-  batch.update(db.collection('users').doc(user.id, user));
-  if (role.oldName) {
-    batch.delete(db.collection('role').doc(toCamelCase(role.oldName)));
-  }
-  return batch.commit();
+export const updateExecRoles = (changes) => {
+  return functions.httpsCallable('auth-updateExecRoles')(changes)
 };
