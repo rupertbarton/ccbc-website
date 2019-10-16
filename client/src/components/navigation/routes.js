@@ -7,11 +7,13 @@ import Races from '../content/races/Races';
 import Upcoming from '../content/races/Upcoming';
 import Results from '../content/races/Results';
 import Safety from '../content/safety/Safety';
+import ModifyExec from '../content/modifyExec/modifyExecPageContainer';
 import PrivacyPolicy from '../content/privacyPolicy/PrivacyPolicy';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import RowingIcon from '@material-ui/icons/Rowing';
+import CreateIcon from '@material-ui/icons/Create';
 
 export default [
   {
@@ -47,14 +49,6 @@ export default [
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
-        subRoutes: [{
-          name: 'Update Executive Comittee',
-          path: '/about/executiveComittee/update',
-          component: ExecutiveComittee,
-          requiresMember: false,
-          requiresExec: false,
-          requiresCaptain: true,
-        }]
       }
     ]
   },
@@ -93,6 +87,15 @@ export default [
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,
+  },
+  {
+    name: 'Update Executive Comittee',
+    path: '/about/executiveComittee/update',
+    icon: <CreateIcon />,
+    component: ModifyExec,
+    requiresMember: false,
+    requiresExec: false,
+    requiresCaptain: true,
   },
   {
     name: 'Privacy',

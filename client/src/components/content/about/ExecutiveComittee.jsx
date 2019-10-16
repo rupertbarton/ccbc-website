@@ -7,7 +7,9 @@ const ExecutiveCommittee = () => {
     <Typography>
       <>
         bla de bla de bla here&apos;s a squirrel -&gt;
-        <img src={squirrel} alt="Smiley face" height="200px"/>
+        <img src={squirrel}
+          alt="Smiley face"
+          height="200px"/>
       </>
     </Typography>
   );

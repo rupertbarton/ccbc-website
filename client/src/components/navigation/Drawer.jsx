@@ -34,19 +34,25 @@ const DrawerComponent = props => {
       <List>
         {routes.map(route => (
           <div key={route.name}>
-            <ListItemLink  route={route} currentUser={props.currentUser} closeDrawer={isMobile && props.closeDrawer} />
+            <ListItemLink  route={route}
+              currentUser={props.currentUser}
+              closeDrawer={isMobile && props.closeDrawer} />
             <Divider />
           </div>
         ))}
-        <Login login={props.login} currentUser={props.currentUser} logout={props.logout} />
+        <Login login={props.login}
+          currentUser={props.currentUser}
+          logout={props.logout} />
       </List>
     </div>
   );
 
   return (
-    <nav className={classes.drawer} aria-label="Navigation drawer">
+    <nav className={classes.drawer}
+      aria-label="Navigation drawer">
       {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-      <Hidden smUp implementation="css">
+      <Hidden smUp
+        implementation="css">
         <Drawer
           variant="temporary"
           open={props.mobileOpen}
@@ -61,7 +67,8 @@ const DrawerComponent = props => {
           {drawerContent(true)}
         </Drawer>
       </Hidden>
-      <Hidden xsDown implementation="css">
+      <Hidden xsDown
+        implementation="css">
         <Drawer
           open
           classes={{

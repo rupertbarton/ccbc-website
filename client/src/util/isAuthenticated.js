@@ -1,8 +1,4 @@
 export default (user, page) => {
-  if (page.name === 'Update Executive Comittee'){
-    console.log(user);
-    console.log(page);
-  }
 
   //If page doesn't require authentication, return true.
   if (!(page.requiresCaptain || page.requiresExec || page.requiresMember)) {

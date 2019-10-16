@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    background: 'linear-gradient(90deg, #D00000 30%, #B00000 70%)',
+    background: theme.background,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -58,7 +58,11 @@ const Header = props => {
     };
 
     return (
-      <IconButton edge="start" className={classes.appBarIcon} color="inherit" aria-label="menu" onClick={handleSocialMediaClick}>
+      <IconButton edge="start"
+        className={classes.appBarIcon}
+        color="inherit"
+        aria-label="menu"
+        onClick={handleSocialMediaClick}>
         <props.Component />
       </IconButton>
     );
@@ -66,21 +70,39 @@ const Header = props => {
 
   return (
     <div className={classes.root}>
-      <AppBar className={classes.appBar} position="fixed">
+      <AppBar className={classes.appBar}
+        position="fixed">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleDrawerToggle}>
+          <IconButton edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+            onClick={handleDrawerToggle}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6"
+            className={classes.title}>
             {isMobile ? <>CCBC</> : <>Collingwood College Boat Club</>}
           </Typography>
-          <SocialMediaIcon Component={FacebookIcon} aria-label="facebook" href="https://www.facebook.com/CollingwoodCollegeBoatClub/" />
-          <SocialMediaIcon Component={TwitterIcon} aria-label="twitter" href="https://twitter.com/ccbc_rowing" />
-          <SocialMediaIcon Component={InstagramIcon} aria-label="instagram" href="https://www.instagram.com/ccbc_durham/" />
-          <SocialMediaIcon Component={YoutubeIcon} aria-label="youtube" href="https://www.youtube.com/channel/UCRFds8sdfgcGvmCdm6F70sg" />
+          <SocialMediaIcon Component={FacebookIcon}
+            aria-label="facebook"
+            href="https://www.facebook.com/CollingwoodCollegeBoatClub/" />
+          <SocialMediaIcon Component={TwitterIcon}
+            aria-label="twitter"
+            href="https://twitter.com/ccbc_rowing" />
+          <SocialMediaIcon Component={InstagramIcon}
+            aria-label="instagram"
+            href="https://www.instagram.com/ccbc_durham/" />
+          <SocialMediaIcon Component={YoutubeIcon}
+            aria-label="youtube"
+            href="https://www.youtube.com/channel/UCRFds8sdfgcGvmCdm6F70sg" />
         </Toolbar>
       </AppBar>
-      <Drawer mobileOpen={mobileOpen} closeDrawer={handleDrawerToggle} login={facebookLogin} currentUser={props.currentUser} logout={logout} />
+      <Drawer mobileOpen={mobileOpen}
+        closeDrawer={handleDrawerToggle}
+        login={facebookLogin}
+        currentUser={props.currentUser}
+        logout={logout} />
     </div>
   );
 };

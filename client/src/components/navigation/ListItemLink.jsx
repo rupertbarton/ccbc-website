@@ -21,7 +21,9 @@ const ListItemLink = props => {
   const renderLink = React.useMemo(
     () =>
       React.forwardRef((itemProps, ref) => (
-        <RouterLink to={props.route.path} {...itemProps} innerRef={ref} />
+        <RouterLink to={props.route.path}
+          {...itemProps}
+          innerRef={ref} />
       )),
     [props.route.path],
   );
@@ -29,8 +31,10 @@ const ListItemLink = props => {
   if (isAuthenticated(props.currentUser, props.route)) {
     return (
       <>
-        <li className={props.className} onClick={props.closeDrawer ? props.closeDrawer : null}>
-          <ListItem button component={renderLink}>
+        <li className={props.className}
+          onClick={props.closeDrawer ? props.closeDrawer : null}>
+          <ListItem button
+            component={renderLink}>
             {props.route.icon ? <ListItemIcon>{props.route.icon}</ListItemIcon> : null}
             <ListItemText primary={props.route.name} />
           </ListItem>
@@ -38,7 +42,11 @@ const ListItemLink = props => {
         {
           props.route.subRoutes && props.route.subRoutes.map(subRoute => {
             return (
-              <ListItemLink key={subRoute.name} className={classes.subRoute}  closeDrawer={props.closeDrawer} currentUser={props.currentUser} route={{ ...subRoute, icon: <NavigateNextIcon/> }}  />
+              <ListItemLink key={subRoute.name}
+                className={classes.subRoute}
+                closeDrawer={props.closeDrawer}
+                currentUser={props.currentUser}
+                route={{ ...subRoute, icon: subRoute.icon ? subRoute.icon : <NavigateNextIcon/> }}  />
             );
           })
         }
