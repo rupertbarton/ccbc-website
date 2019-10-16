@@ -18,13 +18,12 @@ const ModifyExecComponent = props => {
   const classes = useStyles();
 
   const [selectedUsers, setSelectedUsers] = useState(
-    props.execRole.users ?
-      props.execRole.users.map(user => ({ label: user.displayName, value: user.userId }))
+    props.execRole.userIds.length ?
+      props.execRole.userIds.map(userId => ({ label: props.members.find(member => member.id === userId).displayName, value: userId }))
       :
       null);
 
   const handleChange = value => {
-    console.log(value)
     setSelectedUsers(value);
     props.onChange(props.execRole.id, value ? value.map(user => ({userId: user.value, displayName: user.label})) : [])
   };

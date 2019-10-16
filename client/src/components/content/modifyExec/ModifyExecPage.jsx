@@ -7,6 +7,7 @@ import { updateExecRoles } from '../../../api/users'
 
 const useStyles = makeStyles(theme => ({
   button: {
+    marginTop: theme.spacing(2),
     background: theme.background
   }
 }));
@@ -15,8 +16,8 @@ const ModifyExec = props => {
   const classes = useStyles();
   const [changes, setChanges] = useState({})
   useEffect(() => {
-    props.updateMembers();
-    props.updateExec();
+    props.fetchMembers();
+    props.fetchExec();
   }, []);
 
   const handleChange = (roleId, userIds) => {
@@ -24,12 +25,17 @@ const ModifyExec = props => {
       ...changes,
       [roleId]: userIds
     })
-    console.log(changes)
   }
 
   const execRoleSortFunction = (a, b) => (
     a.order - b.order
   )
+
+  const submitChanges = () => {
+    updateExecRoles(changes).then(() => {
+      props.fetchExec()
+    })
+  }
 
   return (
     <>
@@ -42,7 +48,7 @@ const ModifyExec = props => {
         ))}
       </Grid>
       <Grid container justify="center">
-        <Button variant="contained" color="primary" className={classes.button} onClick={() => updateExecRoles(changes)}>
+        <Button variant="contained" color="primary" className={classes.button} onClick={submitChanges}>
           Save
       </Button>
       </Grid>

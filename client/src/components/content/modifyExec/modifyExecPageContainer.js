@@ -4,8 +4,8 @@ import { updateMembers, updateExec } from '../../../actions/users';
 import { fetchMembers, fetchExec } from '../../../api/users';
 
 const mapDispatchToProps = dispatch => ({
-  updateMembers: () => fetchMembers().then(users => dispatch(updateMembers(users))),
-  updateExec: () => fetchExec().then(users => dispatch(updateExec(users))),
+  fetchMembers: () => fetchMembers().then(users => dispatch(updateMembers(users))),
+  fetchExec: () => fetchExec().then(users => dispatch(updateExec(users))),
 });
 
 const mapStateToProps = state => ({
