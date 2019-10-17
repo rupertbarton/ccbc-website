@@ -4,11 +4,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { updateExecRoles } from '../../../api/users'
+import LoadingSpinner from '../../common/LoadingSpinner'
 
 const useStyles = makeStyles(theme => ({
   button: {
     marginTop: theme.spacing(2),
     background: theme.background
+  },
+  loadingSpinner: {
+    textAlign: "center",
   }
 }));
 
@@ -39,19 +43,27 @@ const ModifyExec = props => {
 
   return (
     <>
-      <Grid container spacing={2} justify="center">
-        {props.execRoles.sort(execRoleSortFunction).map(execRole => (
-          <ModifyExecComponent key={execRole.id}
-            execRole={execRole}
-            members={props.members}
-            onChange={handleChange} />
-        ))}
-      </Grid>
-      <Grid container justify="center">
-        <Button variant="contained" color="primary" className={classes.button} onClick={submitChanges}>
-          Save
-      </Button>
-      </Grid>
+      {props.isExecLoading || props.isMembersLoading ?
+      <div className={classes.loadingSpinner}>
+        <LoadingSpinner />
+        </div>
+        :
+        <>
+          <Grid container spacing={2} justify="center">
+            {props.execRoles.sort(execRoleSortFunction).map(execRole => (
+              <ModifyExecComponent key={execRole.id}
+                execRole={execRole}
+                members={props.members}
+                onChange={handleChange} />
+            ))}
+          </Grid>
+          <Grid container justify="center">
+            <Button variant="contained" color="primary" className={classes.button} onClick={submitChanges}>
+              Save
+            </Button>
+          </Grid>
+        </>
+      }
     </>
   );
 };

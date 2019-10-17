@@ -2,7 +2,9 @@ import * as actions from '../actions/users';
 
 const INITIAL_STATE = {
   members: [],
-  execRoles: []
+  execRoles: [],
+  isExecLoading: false,
+  isMembersLoading: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,6 +18,16 @@ export default (state = INITIAL_STATE, action) => {
     return {
       ...state,
       execRoles: action.payload
+    };
+  case actions.SET_EXEC_LOADING:
+    return {
+      ...state,
+      isExecLoading: action.payload
+    };
+  case actions.SET_MEMBERS_LOADING:
+    return {
+      ...state,
+      isMembersLoading: action.payload
     };
 
   default:
