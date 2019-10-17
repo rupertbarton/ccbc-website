@@ -8,6 +8,7 @@ import Upcoming from '../content/races/Upcoming';
 import Results from '../content/races/Results';
 import Safety from '../content/safety/Safety';
 import ModifyExec from '../content/modifyExec/modifyExecPageContainer';
+import ModifyContent from '../content/modifyContent/modifyContentPageContainer';
 import PrivacyPolicy from '../content/privacyPolicy/PrivacyPolicy';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
@@ -93,6 +94,15 @@ export default [
     path: '/about/executiveComittee/update',
     icon: <CreateIcon />,
     component: ModifyExec,
+    requiresMember: false,
+    requiresExec: false,
+    requiresCaptain: true,
+  },
+  {
+    name: 'Update Page Content',
+    path: '/updateContent',
+    icon: <CreateIcon />,
+    component: ModifyContent,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: true,

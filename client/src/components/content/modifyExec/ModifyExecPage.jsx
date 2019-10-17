@@ -11,9 +11,6 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
     background: theme.background
   },
-  loadingSpinner: {
-    textAlign: "center",
-  }
 }));
 
 const ModifyExec = props => {
@@ -44,9 +41,7 @@ const ModifyExec = props => {
   return (
     <>
       {props.isExecLoading || props.isMembersLoading ?
-      <div className={classes.loadingSpinner}>
         <LoadingSpinner />
-        </div>
         :
         <>
           <Grid container spacing={2} justify="center">
