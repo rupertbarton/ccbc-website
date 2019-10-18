@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: 16,
   },
   paper: {
-    overflow: "visible",
+    overflow: 'visible',
     position: 'absolute',
     zIndex: 1,
     marginTop: theme.spacing(1),
@@ -87,7 +87,8 @@ NoOptionsMessage.propTypes = {
 };
 
 function inputComponent({ inputRef, ...props }) {
-  return <div ref={inputRef} {...props} />;
+  return <div ref={inputRef}
+    {...props} />;
 }
 
 inputComponent.propTypes = {
@@ -200,7 +201,9 @@ Option.propTypes = {
 function Placeholder(props) {
   const { selectProps, innerProps = {}, children } = props;
   return (
-    <Typography color="textSecondary" className={selectProps.classes.placeholder} {...innerProps}>
+    <Typography color="textSecondary"
+      className={selectProps.classes.placeholder}
+      {...innerProps}>
       {children}
     </Typography>
   );
@@ -220,7 +223,8 @@ Placeholder.propTypes = {
 
 function SingleValue(props) {
   return (
-    <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
+    <Typography className={props.selectProps.classes.singleValue}
+      {...props.innerProps}>
       {props.children}
     </Typography>
   );
@@ -258,8 +262,8 @@ function MultiValue(props) {
       className={clsx(props.selectProps.classes.chip, {
         [props.selectProps.classes.chipFocused]: props.isFocused,
       })}
-      onDelete={props.removeProps.onClick}
       deleteIcon={<CancelIcon {...props.removeProps} />}
+      onDelete={props.removeProps.onClick}
     />
   );
 }
@@ -277,7 +281,9 @@ MultiValue.propTypes = {
 
 function Menu(props) {
   return (
-    <Paper square className={props.selectProps.classes.paper} {...props.innerProps}>
+    <Paper square
+      className={props.selectProps.classes.paper}
+      {...props.innerProps}>
       {props.children}
     </Paper>
   );
@@ -328,6 +334,7 @@ export default function IntegrationReactSelect(props) {
     <div className={classes.root}>
       <NoSsr>
         <Select
+          isMulti
           classes={classes}
           styles={selectStyles}
           inputId="react-select-multiple"
@@ -343,7 +350,6 @@ export default function IntegrationReactSelect(props) {
           components={components}
           value={props.value}
           onChange={props.onChange}
-          isMulti
         />
       </NoSsr>
     </div>

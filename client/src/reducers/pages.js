@@ -7,8 +7,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case actions.UPDATE_PAGES:
-      console.log(action)
+  case actions.UPDATE_PAGES:
     return {
       ...state,
       pages: action.payload

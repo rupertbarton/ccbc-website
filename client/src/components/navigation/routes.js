@@ -103,9 +103,9 @@ export default [
     path: '/updateContent',
     icon: <CreateIcon />,
     component: ModifyContent,
-    requiresMember: false,
-    requiresExec: false,
-    requiresCaptain: true,
+    requiresMember: true,
+    requiresExec: true,
+    requiresCaptain: false,
   },
   {
     name: 'Privacy',

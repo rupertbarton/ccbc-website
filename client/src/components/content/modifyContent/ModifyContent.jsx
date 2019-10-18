@@ -1,35 +1,69 @@
-import React, { useState, useEffect } from 'react'
-import HtmlEditor from './HtmlEditor'
-import Select from '../../common/Select'
+import React, { useState } from 'react';
+import HtmlEditor from './HtmlEditor';
+import Select from '../../common/Select';
+import SaveButton from '../../common/SaveButton';
+import { savePage, saveMultiplePages } from '../../../api/pages'
 
-const ModifyContent = (props) => {
-  const [pages, setPages] = useState(props.pages)
-  const [text, setText] = useState('')
-  const [selectedPage, setSelectedPage] = useState('home')
-  console.log(props)
+const ModifyContent = props => {
+  const [showPreview, setShowPreview] = useState(false)
+  const [pages, setPages] = useState(props.pages);
+  const [randomTimout, setRandomTimeout] = useState(true);  //this is required as Quill is a partially controlled component, and passing it new props counts as a change, and does not cause a rerender 😢
+  const [selectedPage, setSelectedPage] = useState('');
 
   const handleTextEditorChange = (value) => {
-    setText(value)
-  }
-  
-  const listOfPageNames = Object.keys(pages).map(id => {
-    return {
-      id
-    }
-  })
+    setPages({
+      ...pages,
+      [selectedPage]: {
+        ...pages[selectedPage],
+        changed: true,
+        content: value
+      }
+    })
+  };
 
-  const handleSelectChange = (event) => {
-    console.log([event.target.value])
-    setSelectedPage(event.target.value)
+  const handleSelectChange = event => {
+    setRandomTimeout(false)
+    setTimeout(() => { setRandomTimeout(true) }, 1)
+    setSelectedPage(event.target.value);
+  };
+
+  const handleSubmitSingle = () => {
+    savePage({ id: selectedPage, content: pages[selectedPage].content })
   }
 
+  const handleSubmitMultiple = () => {
+    saveMultiplePages(pages)
+  }
 
   return (
     <>
-    <Select items={listOfPageNames} name="id" value={selectedPage} onChange={handleSelectChange} label="Page name"/>
-      {!!selectedPage && <HtmlEditor onChange={handleTextEditorChange} value={text} />}
-    </>
-  )
-}
+      <Select
+        items={
+          Object.keys(pages).map(id => {
+            return {
+              id
+            };
+          })
+        }
+        name="id"
+        value={selectedPage}
+        label="Select page name"
+        onChange={handleSelectChange} />
 
-export default ModifyContent
+
+      {!!selectedPage && randomTimout &&
+        <>
+          <SaveButton label={showPreview ? "Modify text" : "Show Preview"} onClick={() => { setShowPreview(!showPreview) }} />
+          <HtmlEditor value={pages[selectedPage].content} onChange={handleTextEditorChange} showPreview={showPreview} />
+
+          <div>
+            <SaveButton label="Publish Current Page" onClick={handleSubmitSingle} />
+            <SaveButton label="Publish All Pages" onClick={handleSubmitMultiple} />
+          </div>
+        </>
+      }
+    </>
+  );
+};
+
+export default ModifyContent;

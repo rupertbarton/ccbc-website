@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import ModifyContent from './ModifyContent'
-import LoadingSpinner from '../../common/LoadingSpinner'
+import React, { useState, useEffect } from 'react';
+import ModifyContent from './ModifyContent';
+import LoadingSpinner from '../../common/LoadingSpinner';
 
-const ModifyContentPage = (props) => {
+const ModifyContentPage = props => {
   useEffect(() => {
-    props.fetchPages()
-  }, [])
-
-  console.log("sa.jnasdlfjnaslgasfg", props)
+    props.fetchPages();
+  }, []);
 
   return (
     <>
       {props.isPagesLoading ? <LoadingSpinner /> : <ModifyContent {...props} />}
     </>
-  )
-}
+  );
+};
 
-export default ModifyContentPage
+export default ModifyContentPage;

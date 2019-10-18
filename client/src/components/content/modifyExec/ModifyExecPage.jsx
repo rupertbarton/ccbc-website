@@ -3,8 +3,9 @@ import ModifyExecComponent from './ModifyExecComponent';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { updateExecRoles } from '../../../api/users'
-import LoadingSpinner from '../../common/LoadingSpinner'
+import { updateExecRoles } from '../../../api/users';
+import LoadingSpinner from '../../common/LoadingSpinner';
+import SaveButton from '../../common/SaveButton';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 const ModifyExec = props => {
   const classes = useStyles();
-  const [changes, setChanges] = useState({})
+  const [changes, setChanges] = useState({});
   useEffect(() => {
     props.fetchMembers();
     props.fetchExec();
@@ -25,18 +26,18 @@ const ModifyExec = props => {
     setChanges({
       ...changes,
       [roleId]: userIds
-    })
-  }
+    });
+  };
 
   const execRoleSortFunction = (a, b) => (
     a.order - b.order
-  )
+  );
 
   const submitChanges = () => {
     updateExecRoles(changes).then(() => {
-      props.fetchExec()
-    })
-  }
+      props.fetchExec();
+    });
+  };
 
   return (
     <>
@@ -44,7 +45,9 @@ const ModifyExec = props => {
         <LoadingSpinner />
         :
         <>
-          <Grid container spacing={2} justify="center">
+          <Grid container
+            spacing={2}
+            justify="center">
             {props.execRoles.sort(execRoleSortFunction).map(execRole => (
               <ModifyExecComponent key={execRole.id}
                 execRole={execRole}
@@ -52,10 +55,10 @@ const ModifyExec = props => {
                 onChange={handleChange} />
             ))}
           </Grid>
-          <Grid container justify="center">
-            <Button variant="contained" color="primary" className={classes.button} onClick={submitChanges}>
-              Save
-            </Button>
+          <Grid container
+            justify="center">
+            <SaveButton label="Save"
+              onClick={submitChanges} />
           </Grid>
         </>
       }
