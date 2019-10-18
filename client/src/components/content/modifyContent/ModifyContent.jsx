@@ -23,8 +23,8 @@ const ModifyContent = props => {
 
   const handleSelectChange = event => {
     setRandomTimeout(false)
-    setTimeout(() => { setRandomTimeout(true) }, 1)
     setSelectedPage(event.target.value);
+    setTimeout(() => { setRandomTimeout(true) }, 1)
   };
 
   const handleSubmitSingle = () => {
@@ -33,6 +33,14 @@ const ModifyContent = props => {
 
   const handleSubmitMultiple = () => {
     saveMultiplePages(pages)
+  }
+
+  const handleShowPreview = () => {
+    setShowPreview(!showPreview)
+  }
+
+  const handleResetPages = () => {
+    props.fetchPages()
   }
 
   return (
@@ -53,7 +61,8 @@ const ModifyContent = props => {
 
       {!!selectedPage && randomTimout &&
         <>
-          <SaveButton label={showPreview ? "Modify text" : "Show Preview"} onClick={() => { setShowPreview(!showPreview) }} />
+          <SaveButton label={showPreview ? "Modify text" : "Show Preview"} onClick={handleShowPreview} />
+          <SaveButton label={"Reset Pages"} onClick={handleResetPages} />
           <HtmlEditor value={pages[selectedPage].content} onChange={handleTextEditorChange} showPreview={showPreview} />
 
           <div>

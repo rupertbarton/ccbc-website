@@ -21,7 +21,7 @@ const Content = props => {
   return (
     <div>
       <Paper className={classes.root}>
-        <props.route.component/>
+        <props.route.component {...props} />
       </Paper>
     </div>
   );

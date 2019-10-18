@@ -18,8 +18,12 @@ const ModifyExec = props => {
   const classes = useStyles();
   const [changes, setChanges] = useState({});
   useEffect(() => {
+    if (Object.keys(props.members).length === 0) {
     props.fetchMembers();
-    props.fetchExec();
+    }
+    if (Object.keys(props.execRoles).length === 0) {
+      props.fetchExec();
+    }
   }, []);
 
   const handleChange = (roleId, userIds) => {

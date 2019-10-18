@@ -4,7 +4,12 @@ import LoadingSpinner from '../../common/LoadingSpinner';
 
 const ModifyContentPage = props => {
   useEffect(() => {
+    if (Object.keys(props.pages).length === 0) {
     props.fetchPages();
+    }
+    if (Object.keys(props.execRoles).length === 0) {
+      props.fetchExec();
+    }
   }, []);
 
   return (

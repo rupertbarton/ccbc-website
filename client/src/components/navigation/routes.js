@@ -1,4 +1,5 @@
 import React from 'react';
+import InformationPage from '../content/informationPage/informationPageContainer';
 import Home from '../content/home/Home';
 import About from '../content/about/About';
 import TheClub from '../content/about/TheClub';
@@ -21,7 +22,7 @@ export default [
     name: 'Home',
     path: '/',
     icon: <HomeIcon />,
-    component: Home,
+    component: InformationPage,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,

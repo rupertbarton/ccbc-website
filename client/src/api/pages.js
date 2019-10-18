@@ -1,5 +1,5 @@
 import firebase from './firebaseApp';
-import { updatePages, setPagesLoading } from '../actions/pages';
+import { updatePages, setPagesLoading, updatePage } from '../actions/pages';
 
 let db = firebase.firestore();
 
@@ -14,6 +14,19 @@ export const fetchPages = () => dispatch => {
   })
     .then(pages => {
       dispatch(updatePages(pages));
+      dispatch(setPagesLoading(false));
+    });
+};
+
+export const fetchPage = pageName => dispatch => {
+  dispatch(setPagesLoading(true));
+  console.log(pageName)
+  return db.collection('pages').doc(pageName).get().then(doc => {
+    let page = {[doc.id]: doc.data()};
+    return page;
+  })
+    .then(page => {
+      dispatch(updatePage(page));
       dispatch(setPagesLoading(false));
     });
 };

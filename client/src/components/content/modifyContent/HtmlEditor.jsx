@@ -9,8 +9,8 @@ import Divider from '@material-ui/core/Divider';
 
 const HtmlEditor = props => {
 
-  Quill.register('modules/blotFormatter', BlotFormatter);
-  Quill.register('modules/imageDrop', ImageDrop);
+  Quill.register({'modules/blotFormatter': BlotFormatter}, true);
+  Quill.register({'modules/imageDrop': ImageDrop}, true);
 
   const modules = {
     blotFormatter: {
@@ -42,6 +42,7 @@ const HtmlEditor = props => {
           <h2>Preview</h2>
           <Divider />
           <Typography dangerouslySetInnerHTML={{ __html: props.value }} />
+          {props.value}
           <Divider />
         </>
         :

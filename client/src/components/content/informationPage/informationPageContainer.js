@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import ModifyContentPage from './ModifyContentPage';
-import { fetchPages } from '../../../api/pages';
+import InformationPage from './InformationPage';
+import { fetchPage } from '../../../api/pages';
 import { fetchExec } from '../../../api/users';
 
 
 const mapDispatchToProps = dispatch => ({
-  fetchPages: () => dispatch(fetchPages()),
+  fetchPage: (pageName) => dispatch(fetchPage(pageName)),
   fetchExec: () => dispatch(fetchExec()),
 });
 
@@ -16,4 +16,4 @@ const mapStateToProps = state => ({
   isExecLoading: state.users.isExecLoading,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModifyContentPage);
+export default connect(mapStateToProps, mapDispatchToProps)(InformationPage);
