@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import InformationPage from './InformationPage';
-import { fetchPage } from '../../../api/pages';
+import { fetchPages } from '../../../api/pages';
 import { fetchExec } from '../../../api/users';
 
 
 const mapDispatchToProps = dispatch => ({
-  fetchPage: (pageName) => dispatch(fetchPage(pageName)),
+  fetchPages: (pageName) => dispatch(fetchPages(pageName)),
   fetchExec: () => dispatch(fetchExec()),
 });
 
