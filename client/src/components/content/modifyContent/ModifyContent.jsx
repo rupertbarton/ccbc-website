@@ -8,13 +8,13 @@ const ModifyContent = props => {
   const [showPreview, setShowPreview] = useState(false)
   const [pages, setPages] = useState(props.pages);
   const [randomTimout, setRandomTimeout] = useState(true);  //this is required as Quill is a partially controlled component, and passing it new props counts as a change, and does not cause a rerender 😢
-  const [selectedPage, setSelectedPage] = useState('');
+  // const [props.selectedPage, setprops.SelectedPage] = useState(() => pages.Home ? 'Home' : '');
 
   const handleTextEditorChange = (value) => {
     setPages({
       ...pages,
-      [selectedPage]: {
-        ...pages[selectedPage],
+      [props.selectedPage]: {
+        ...pages[props.selectedPage],
         changed: true,
         content: value
       }
@@ -23,16 +23,16 @@ const ModifyContent = props => {
 
   const handleSelectChange = event => {
     setRandomTimeout(false)
-    setSelectedPage(event.target.value);
+    props.updatePageToEdit(event.target.value);
     setTimeout(() => { setRandomTimeout(true) }, 1)
   };
 
   const handleSubmitSingle = () => {
-    savePage({ id: selectedPage, content: pages[selectedPage].content })
+    savePage({ id: props.selectedPage, content: pages[props.selectedPage].content }).then(() => props.fetchPages())
   }
 
   const handleSubmitMultiple = () => {
-    saveMultiplePages(pages)
+    saveMultiplePages(pages).then(() => props.fetchPages())
   }
 
   const handleShowPreview = () => {
@@ -47,23 +47,23 @@ const ModifyContent = props => {
     <>
       <Select
         items={
-          Object.keys(pages).map(id => {
+          Object.keys(pages).sort((a, b) => pages[a].order - pages[b].order).map(id => {
             return {
               id
             };
           })
         }
         name="id"
-        value={selectedPage}
+        value={props.selectedPage}
         label="Select page name"
         onChange={handleSelectChange} />
 
 
-      {!!selectedPage && randomTimout &&
+      {!!props.selectedPage && randomTimout &&
         <>
           <SaveButton label={showPreview ? "Modify text" : "Show Preview"} onClick={handleShowPreview} />
           <SaveButton label={"Reset Pages"} onClick={handleResetPages} />
-          <HtmlEditor value={pages[selectedPage].content} onChange={handleTextEditorChange} showPreview={showPreview} />
+          <HtmlEditor value={pages[props.selectedPage].content} onChange={handleTextEditorChange} showPreview={showPreview} />
 
           <div>
             <SaveButton label="Publish Current Page" onClick={handleSubmitSingle} />
