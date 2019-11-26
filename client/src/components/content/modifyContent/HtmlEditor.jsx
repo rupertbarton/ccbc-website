@@ -5,6 +5,7 @@ import { Typography } from '@material-ui/core';
 import BlotFormatter from 'quill-blot-formatter';
 import { ImageDrop } from 'quill-image-drop-module';
 import Divider from '@material-ui/core/Divider';
+import formatStringToHtml from '../../../util/stringToHtml'
 
 
 const HtmlEditor = props => {
@@ -35,13 +36,21 @@ const HtmlEditor = props => {
     ],
   }
 
+  const getHtmlString = () => {
+    const htmlString = props.value || ''
+
+    return formatStringToHtml(htmlString, props.execRoles)
+  }
+
   return (
     <>
       {props.showPreview ?
         <>
           <h2>Preview</h2>
           <Divider />
-          <Typography dangerouslySetInnerHTML={{ __html: props.value }} />
+          <Typography dangerouslySetInnerHTML={{ __html: getHtmlString() }} />
+          <Divider />
+          <h2>Pure HTML</h2>
           {props.value}
           <Divider />
         </>

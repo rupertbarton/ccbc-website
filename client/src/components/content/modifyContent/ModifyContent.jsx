@@ -63,7 +63,7 @@ const ModifyContent = props => {
         <>
           <SaveButton label={showPreview ? "Modify text" : "Show Preview"} onClick={handleShowPreview} />
           <SaveButton label={"Reset Pages"} onClick={handleResetPages} />
-          <HtmlEditor value={pages[props.selectedPage].content} onChange={handleTextEditorChange} showPreview={showPreview} />
+          <HtmlEditor value={pages[props.selectedPage].content} onChange={handleTextEditorChange} showPreview={showPreview} execRoles={props.execRoles} />
 
           <div>
             <SaveButton label="Publish Current Page" onClick={handleSubmitSingle} />

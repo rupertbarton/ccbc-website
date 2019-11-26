@@ -2,12 +2,14 @@ import React from 'react';
 import InformationPage from '../content/informationPage/informationPageContainer';
 import ModifyExec from '../content/modifyExec/modifyExecPageContainer';
 import ModifyContent from '../content/modifyContent/modifyContentPageContainer';
+import CalendarPage from '../content/calendar/CalendarPage';
 import PrivacyPolicy from '../content/privacyPolicy/PrivacyPolicy';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import RowingIcon from '@material-ui/icons/Rowing';
 import CreateIcon from '@material-ui/icons/Create';
+import PeopleIcon from '@material-ui/icons/People';
 
 export default [
   {
@@ -85,7 +87,7 @@ export default [
   {
     name: 'Update Executive Comittee',
     path: '/about/executiveComittee/update',
-    icon: <CreateIcon />,
+    icon: <PeopleIcon />,
     component: ModifyExec,
     requiresMember: false,
     requiresExec: false,
