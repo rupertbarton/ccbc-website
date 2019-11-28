@@ -1,26 +1,22 @@
 import React from 'react';
-import Home from '../content/home/Home';
-import About from '../content/about/About';
-import TheClub from '../content/about/TheClub';
-import ExecutiveComittee from '../content/about/ExecutiveComittee';
-import Races from '../content/races/Races';
-import Upcoming from '../content/races/Upcoming';
-import Results from '../content/races/Results';
-import Safety from '../content/safety/Safety';
+import InformationPage from '../content/informationPage/informationPageContainer';
 import ModifyExec from '../content/modifyExec/modifyExecPageContainer';
+import ModifyContent from '../content/modifyContent/modifyContentPageContainer';
+import CalendarPage from '../content/calendar/CalendarPage';
 import PrivacyPolicy from '../content/privacyPolicy/PrivacyPolicy';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import RowingIcon from '@material-ui/icons/Rowing';
 import CreateIcon from '@material-ui/icons/Create';
+import PeopleIcon from '@material-ui/icons/People';
 
 export default [
   {
     name: 'Home',
     path: '/',
     icon: <HomeIcon />,
-    component: Home,
+    component: InformationPage,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,
@@ -29,7 +25,7 @@ export default [
     name: 'About',
     path: '/about',
     icon: <InfoIcon />,
-    component: About,
+    component: InformationPage,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,
@@ -37,7 +33,7 @@ export default [
       {
         name: 'The Club',
         path: '/about/club',
-        component: TheClub,
+        component: InformationPage,
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
@@ -45,7 +41,7 @@ export default [
       {
         name: 'Executive Comittee',
         path: '/about/executiveComittee',
-        component: ExecutiveComittee,
+        component: InformationPage,
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
@@ -56,7 +52,7 @@ export default [
     name: 'Races',
     path: '/races',
     icon: <RowingIcon />,
-    component: Races,
+    component: InformationPage,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,
@@ -64,7 +60,7 @@ export default [
       {
         name: 'Upcoming',
         path: '/races/upcoming',
-        component: Upcoming,
+        component: InformationPage,
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
@@ -72,7 +68,7 @@ export default [
       {
         name: 'Results',
         path: '/results',
-        component: Results,
+        component: InformationPage,
         requiresMember: false,
         requiresExec: false,
         requiresCaptain: false,
@@ -83,7 +79,7 @@ export default [
     name: 'Safety',
     path: '/safety',
     icon: <VerifiedUserOutlinedIcon />,
-    component: Safety,
+    component: InformationPage,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: false,
@@ -91,11 +87,20 @@ export default [
   {
     name: 'Update Executive Comittee',
     path: '/about/executiveComittee/update',
-    icon: <CreateIcon />,
+    icon: <PeopleIcon />,
     component: ModifyExec,
     requiresMember: false,
     requiresExec: false,
     requiresCaptain: true,
+  },
+  {
+    name: 'Update Page Content',
+    path: '/updateContent',
+    icon: <CreateIcon />,
+    component: ModifyContent,
+    requiresMember: true,
+    requiresExec: true,
+    requiresCaptain: false,
   },
   {
     name: 'Privacy',

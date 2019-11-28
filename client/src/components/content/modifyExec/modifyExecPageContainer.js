@@ -9,8 +9,8 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   members: state.users.members,
-  execRoles: state.users.execRoles,
   isExecLoading: state.users.isExecLoading,
+  execRoles: state.users.execRoles,
   isMembersLoading: state.users.isMembersLoading
 });
 
