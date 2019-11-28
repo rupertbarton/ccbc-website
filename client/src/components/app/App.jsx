@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from '../navigation/headerContainer';
-import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import allRoutes from '../navigation/routes';
 import AuthenticateRoute from '../navigation/authenticateRouteContainer';
 import { auth } from 'firebase/app';
 import PropTypes from 'prop-types';
+import LoadingSpinner from '../common/LoadingSpinner'
 
 const mapOverRoutes = routes => (
   <>
@@ -23,6 +24,8 @@ const mapOverRoutes = routes => (
 
 const App = props => {
 
+  const [authReady, setAuthReady] = useState(false)
+
   auth().onAuthStateChanged(user => {
     if (user) {
       user.getIdTokenResult().then(token => {
@@ -34,21 +37,32 @@ const App = props => {
           roleName: token.claims.roleName,
         };
         props.updateCurrentUser({ ...user, ...customClaims });
+        setAuthReady(true)
       });
     } else {
       props.updateCurrentUser(null);
+      setAuthReady(true)
     }
   });
 
   return (
     <>
-      <Router>
-        <CssBaseline />
-        <Header />
-        <Switch>
-          {mapOverRoutes(allRoutes)}
-        </Switch>
-      </Router>
+      {
+        authReady ?
+
+          <Router>
+            <CssBaseline />
+            <Header />
+            <Switch>
+              {mapOverRoutes(allRoutes)}
+            </Switch>
+          </Router>
+          :
+          <Router>
+            <Header />
+            <LoadingSpinner />
+          </Router>
+      }
     </>
   );
 };
