@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import AutoSelect from '../../common/AutoSelect';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -40,6 +41,20 @@ const ModifyExecComponent = props => {
       </CardContent>
     </Card>
   );
+};
+
+ModifyExecComponent.propTypes = {
+  members: PropTypes.arrayOf(
+    PropTypes.object
+  ),
+  onChange: PropTypes.func,
+  execRole: PropTypes.objectOf({
+    displayNames: PropTypes.arrayOf(PropTypes.string),
+    userIds: PropTypes.arrayOf(PropTypes.string),
+    name: PropTypes.string,
+    order: PropTypes.number,
+    isCaptain: PropTypes.bool
+  }),
 };
 
 export default ModifyExecComponent;

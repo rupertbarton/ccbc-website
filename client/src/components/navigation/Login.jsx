@@ -4,9 +4,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PersonIcon from '@material-ui/icons/Person';
 import { makeStyles } from '@material-ui/core/styles';
-import { auth } from 'firebase/app';
+import PropTypes from 'prop-types';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   roundedImage: {
     height: 32,
     width: 32,
@@ -36,6 +36,14 @@ const Login = props => {
         </ListItem>
       </li>
     );
+};
+
+Login.propTypes = {
+  currentUser: PropTypes.objectOf({
+    photoURL: PropTypes.string
+  }),
+  logout: PropTypes.func,
+  login: PropTypes.func
 };
 
 export default Login;

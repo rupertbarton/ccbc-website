@@ -1,25 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import ModifyExecComponent from './ModifyExecComponent';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import { updateExecRoles } from '../../../api/users';
 import LoadingSpinner from '../../common/LoadingSpinner';
 import SaveButton from '../../common/SaveButton';
+import PropTypes from 'prop-types';
 
-const useStyles = makeStyles(theme => ({
-  button: {
-    marginTop: theme.spacing(2),
-    background: theme.background
-  },
-}));
-
-const ModifyExec = props => {
-  const classes = useStyles();
+const ModifyExecPage = props => {
   const [changes, setChanges] = useState({});
   useEffect(() => {
     if (Object.keys(props.members).length === 0) {
-    props.fetchMembers();
+      props.fetchMembers();
     }
     if (Object.keys(props.execRoles).length === 0) {
       props.fetchExec();
@@ -70,4 +61,21 @@ const ModifyExec = props => {
   );
 };
 
-export default ModifyExec;
+ModifyExecPage.propTypes = {
+  members: PropTypes.arrayOf(
+    PropTypes.object
+  ),
+  fetchMembers: PropTypes.func,
+  execRoles: PropTypes.arrayOf(PropTypes.objectOf({
+    displayNames: PropTypes.arrayOf(PropTypes.string),
+    userIds: PropTypes.arrayOf(PropTypes.string),
+    name: PropTypes.string,
+    order: PropTypes.number,
+    isCaptain: PropTypes.bool
+  })),
+  fetchExec: PropTypes.func,
+  isExecLoading: PropTypes.bool,
+  isMembersLoading: PropTypes.bool
+};
+
+export default ModifyExecPage;

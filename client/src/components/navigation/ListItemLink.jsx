@@ -20,7 +20,9 @@ const ListItemLink = props => {
 
   const renderLink = React.useMemo(
     () =>
+    // eslint-disable-next-line react/display-name
       React.forwardRef((itemProps, ref) => (
+        // eslint-disable-next-line react/prop-types
         <RouterLink to={props.route.path}
           {...itemProps}
           innerRef={ref} />

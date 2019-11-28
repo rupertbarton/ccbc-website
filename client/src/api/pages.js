@@ -20,9 +20,8 @@ export const fetchPages = () => dispatch => {
 
 export const fetchPage = pageName => dispatch => {
   dispatch(setPagesLoading(true));
-  console.log(pageName)
   return db.collection('pages').doc(pageName).get().then(doc => {
-    let page = {[doc.id]: doc.data()};
+    let page = { [doc.id]: doc.data() };
     return page;
   })
     .then(page => {
@@ -38,8 +37,8 @@ export const savePage = page => {
 export const saveMultiplePages = pages => {
   return Promise.all(Object.keys(pages).map(id => {
     if (pages[id].changed) {
-      let currentPage = { id, content: pages[id].content }
-      return savePage(currentPage)
+      let currentPage = { id, content: pages[id].content };
+      return savePage(currentPage);
     }
   }));
 };
