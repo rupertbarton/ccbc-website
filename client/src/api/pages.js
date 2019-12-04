@@ -35,10 +35,11 @@ export const savePage = page => {
 };
 
 export const saveMultiplePages = pages => {
-  return Promise.all(Object.keys(pages).map(id => {
+  const arrayOfPageUpdatePromises = Object.keys(pages).map(id => {
     if (pages[id].changed) {
       let currentPage = { id, content: pages[id].content };
       return savePage(currentPage);
     }
-  }));
+  });
+  return Promise.all(arrayOfPageUpdatePromises);
 };

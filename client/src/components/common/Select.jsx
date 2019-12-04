@@ -51,9 +51,8 @@ CustomSelect.propTypes = {
   value: PropTypes.string,
   name: PropTypes.string,
   onChange: PropTypes.func,
-  items: PropTypes.arrayOf(PropTypes.objectOf({
-    id: PropTypes.string,
-    name: PropTypes.string
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string
   })),
 };
 

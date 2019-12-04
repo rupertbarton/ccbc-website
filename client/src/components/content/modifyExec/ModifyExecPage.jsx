@@ -5,6 +5,7 @@ import { updateExecRoles } from '../../../api/users';
 import LoadingSpinner from '../../common/LoadingSpinner';
 import SaveButton from '../../common/SaveButton';
 import PropTypes from 'prop-types';
+import { execRole, member } from '../../../types';
 
 const ModifyExecPage = props => {
   const [changes, setChanges] = useState({});
@@ -62,17 +63,9 @@ const ModifyExecPage = props => {
 };
 
 ModifyExecPage.propTypes = {
-  members: PropTypes.arrayOf(
-    PropTypes.object
-  ),
+  members: PropTypes.arrayOf(member),
   fetchMembers: PropTypes.func,
-  execRoles: PropTypes.arrayOf(PropTypes.objectOf({
-    displayNames: PropTypes.arrayOf(PropTypes.string),
-    userIds: PropTypes.arrayOf(PropTypes.string),
-    name: PropTypes.string,
-    order: PropTypes.number,
-    isCaptain: PropTypes.bool
-  })),
+  execRoles: PropTypes.arrayOf(execRole),
   fetchExec: PropTypes.func,
   isExecLoading: PropTypes.bool,
   isMembersLoading: PropTypes.bool

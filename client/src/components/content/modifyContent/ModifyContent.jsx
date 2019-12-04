@@ -4,6 +4,7 @@ import Select from '../../common/Select';
 import SaveButton from '../../common/SaveButton';
 import { savePage, saveMultiplePages } from '../../../api/pages';
 import PropTypes from 'prop-types';
+import { pages, execRole } from '../../../types';
 
 const ModifyContent = props => {
   const [showPreview, setShowPreview] = useState(false);
@@ -83,21 +84,10 @@ const ModifyContent = props => {
 };
 
 ModifyContent.propTypes = {
-  pages: PropTypes.objectOf(
-    PropTypes.objectOf({
-      content: PropTypes.string,
-      order: PropTypes.number
-    })
-  ),
+  pages,
   selectedPage: PropTypes.string,
   fetchPages: PropTypes.func,
-  execRoles: PropTypes.arrayOf(PropTypes.objectOf({
-    displayNames: PropTypes.arrayOf(PropTypes.string),
-    userIds: PropTypes.arrayOf(PropTypes.string),
-    name: PropTypes.string,
-    order: PropTypes.number,
-    isCaptain: PropTypes.bool
-  })),
+  execRoles: PropTypes.arrayOf(execRole),
   updatePageToEdit: PropTypes.func
 };
 

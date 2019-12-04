@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ModifyContent from './ModifyContent';
 import LoadingSpinner from '../../common/LoadingSpinner';
 import PropTypes from 'prop-types';
+import { pages, execRole } from '../../../types';
 
 const ModifyContentPage = props => {
   const [hasFetchingStarted, setHasFethcingStarted] = useState(false);
@@ -24,20 +25,9 @@ const ModifyContentPage = props => {
 };
 
 ModifyContentPage.propTypes = {
-  pages: PropTypes.objectOf(
-    PropTypes.objectOf({
-      content: PropTypes.string,
-      order: PropTypes.number
-    })
-  ),
+  pages,
   fetchPages: PropTypes.func,
-  execRoles: PropTypes.arrayOf(PropTypes.objectOf({
-    displayNames: PropTypes.arrayOf(PropTypes.string),
-    userIds: PropTypes.arrayOf(PropTypes.string),
-    name: PropTypes.string,
-    order: PropTypes.number,
-    isCaptain: PropTypes.bool
-  })),
+  execRoles: PropTypes.arrayOf(execRole),
   fetchExec: PropTypes.func,
   isExecLoading: PropTypes.bool,
   isPagesLoading: PropTypes.bool

@@ -7,6 +7,7 @@ import { ImageDrop } from 'quill-image-drop-module';
 import Divider from '@material-ui/core/Divider';
 import formatStringToHtml from '../../../util/stringToHtml';
 import PropTypes from 'prop-types';
+import { execRole } from '../../../types';
 
 const HtmlEditor = props => {
 
@@ -68,13 +69,7 @@ const HtmlEditor = props => {
 
 HtmlEditor.propTypes = {
   value: PropTypes.string,
-  execRoles: PropTypes.arrayOf(PropTypes.objectOf({
-    displayNames: PropTypes.arrayOf(PropTypes.string),
-    userIds: PropTypes.arrayOf(PropTypes.string),
-    name: PropTypes.string,
-    order: PropTypes.number,
-    isCaptain: PropTypes.bool
-  })),
+  execRoles: PropTypes.arrayOf(execRole),
   onChange: PropTypes.func,
   showPreview: PropTypes.bool
 };

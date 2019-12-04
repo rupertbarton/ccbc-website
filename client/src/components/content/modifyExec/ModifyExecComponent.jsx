@@ -5,6 +5,7 @@ import AutoSelect from '../../common/AutoSelect';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
+import { member, execRole } from '../../../types';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -44,17 +45,9 @@ const ModifyExecComponent = props => {
 };
 
 ModifyExecComponent.propTypes = {
-  members: PropTypes.arrayOf(
-    PropTypes.object
-  ),
+  members: PropTypes.arrayOf(member),
   onChange: PropTypes.func,
-  execRole: PropTypes.objectOf({
-    displayNames: PropTypes.arrayOf(PropTypes.string),
-    userIds: PropTypes.arrayOf(PropTypes.string),
-    name: PropTypes.string,
-    order: PropTypes.number,
-    isCaptain: PropTypes.bool
-  }),
+  execRole
 };
 
 export default ModifyExecComponent;

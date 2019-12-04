@@ -357,13 +357,13 @@ export default function IntegrationReactSelect(props) {
 }
 
 IntegrationReactSelect.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.objectOf({
+  items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
     displayName: PropTypes.string
   })),
   label: PropTypes.string,
   placeholder: PropTypes.string,
-  value: PropTypes.arrayOf(PropTypes.objectOf({
+  value: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
     displayName: PropTypes.string
   })),

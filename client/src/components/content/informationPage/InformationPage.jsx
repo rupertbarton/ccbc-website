@@ -4,6 +4,7 @@ import LoadingSpinner from '../../common/LoadingSpinner';
 import fp from 'lodash/fp';
 import formatStringToHtml from '../../../util/stringToHtml';
 import PropTypes from 'prop-types';
+import { pages, route, execRole } from '../../../types';
 
 const InformationPage = props => {
   useEffect(() => {
@@ -36,31 +37,13 @@ const InformationPage = props => {
 };
 
 InformationPage.propTypes = {
-  pages: PropTypes.objectOf(
-    PropTypes.objectOf({
-      content: PropTypes.string,
-      order: PropTypes.number
-    })
-  ),
-  route: PropTypes.objectOf({
-    name: PropTypes.string,
-    path: PropTypes.string,
-    component: PropTypes.elementType,
-    requiresMember: PropTypes.bool,
-    requiresExec: PropTypes.bool,
-    requiresCaptain: PropTypes.bool,
-  }),
+  pages,
+  route,
   fetchExec: PropTypes.func,
   fetchPages: PropTypes.func,
   isPagesLoading: PropTypes.bool,
   isExecLoading: PropTypes.bool,
-  execRoles: PropTypes.arrayOf(PropTypes.objectOf({
-    displayNames: PropTypes.arrayOf(PropTypes.string),
-    userIds: PropTypes.arrayOf(PropTypes.string),
-    name: PropTypes.string,
-    order: PropTypes.number,
-    isCaptain: PropTypes.bool
-  })),
+  execRoles: PropTypes.arrayOf(execRole),
 };
 
 export default InformationPage;
