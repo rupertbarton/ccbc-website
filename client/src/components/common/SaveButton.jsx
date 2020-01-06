@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -20,6 +21,11 @@ const SaveButton = props => {
       {props.label}
     </Button>
   );
+};
+
+SaveButton.propTypes = {
+  onClick: PropTypes.func,
+  label: PropTypes.string
 };
 
 export default SaveButton;

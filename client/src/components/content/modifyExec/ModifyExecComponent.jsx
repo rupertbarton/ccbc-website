@@ -4,6 +4,8 @@ import Card from '@material-ui/core/Card';
 import AutoSelect from '../../common/AutoSelect';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
+import { member, execRole } from '../../../types';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -40,6 +42,12 @@ const ModifyExecComponent = props => {
       </CardContent>
     </Card>
   );
+};
+
+ModifyExecComponent.propTypes = {
+  members: PropTypes.arrayOf(member),
+  onChange: PropTypes.func,
+  execRole
 };
 
 export default ModifyExecComponent;

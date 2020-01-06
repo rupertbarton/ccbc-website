@@ -5,13 +5,14 @@ import { Typography } from '@material-ui/core';
 import BlotFormatter from 'quill-blot-formatter';
 import { ImageDrop } from 'quill-image-drop-module';
 import Divider from '@material-ui/core/Divider';
-import formatStringToHtml from '../../../util/stringToHtml'
-
+import formatStringToHtml from '../../../util/stringToHtml';
+import PropTypes from 'prop-types';
+import { execRole } from '../../../types';
 
 const HtmlEditor = props => {
 
-  Quill.register({'modules/blotFormatter': BlotFormatter}, true);
-  Quill.register({'modules/imageDrop': ImageDrop}, true);
+  Quill.register({ 'modules/blotFormatter': BlotFormatter }, true);
+  Quill.register({ 'modules/imageDrop': ImageDrop }, true);
 
   const modules = {
     blotFormatter: {
@@ -34,13 +35,13 @@ const HtmlEditor = props => {
       [{ 'direction': 'rtl' }],
       ['clean'],
     ],
-  }
+  };
 
   const getHtmlString = () => {
-    const htmlString = props.value || ''
+    const htmlString = props.value || '';
 
-    return formatStringToHtml(htmlString, props.execRoles)
-  }
+    return formatStringToHtml(htmlString, props.execRoles);
+  };
 
   return (
     <>
@@ -58,12 +59,19 @@ const HtmlEditor = props => {
         <ReactQuill
           theme="snow"
           value={props.value}
-          onChange={props.onChange}
           modules={modules}
+          onChange={props.onChange}
         />
       }
     </>
   );
+};
+
+HtmlEditor.propTypes = {
+  value: PropTypes.string,
+  execRoles: PropTypes.arrayOf(execRole),
+  onChange: PropTypes.func,
+  showPreview: PropTypes.bool
 };
 
 export default HtmlEditor;

@@ -2,13 +2,12 @@ import { connect } from 'react-redux';
 import ModifyContentPage from './ModifyContentPage';
 import { fetchPages } from '../../../api/pages';
 import { fetchExec } from '../../../api/users';
-import { updatePageToEdit } from '../../../actions/pages'
-
+import { updatePageToEdit } from '../../../actions/pages';
 
 const mapDispatchToProps = dispatch => ({
   fetchPages: () => dispatch(fetchPages()),
   fetchExec: () => dispatch(fetchExec()),
-  updatePageToEdit: (pageName) => dispatch(updatePageToEdit(pageName))
+  updatePageToEdit: pageName => dispatch(updatePageToEdit(pageName))
 });
 
 const mapStateToProps = state => ({

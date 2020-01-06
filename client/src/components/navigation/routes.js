@@ -10,6 +10,7 @@ import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import RowingIcon from '@material-ui/icons/Rowing';
 import CreateIcon from '@material-ui/icons/Create';
 import PeopleIcon from '@material-ui/icons/People';
+import EventIcon from '@material-ui/icons/Event';
 
 export default [
   {
@@ -81,6 +82,15 @@ export default [
     icon: <VerifiedUserOutlinedIcon />,
     component: InformationPage,
     requiresMember: false,
+    requiresExec: false,
+    requiresCaptain: false,
+  },
+  {
+    name: 'Calendar',
+    path: '/about/calendar',
+    icon: <EventIcon />,
+    component: CalendarPage,
+    requiresMember: true,
     requiresExec: false,
     requiresCaptain: false,
   },

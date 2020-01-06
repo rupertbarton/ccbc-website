@@ -355,3 +355,17 @@ export default function IntegrationReactSelect(props) {
     </div>
   );
 }
+
+IntegrationReactSelect.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    displayName: PropTypes.string
+  })),
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    displayName: PropTypes.string
+  })),
+  onChange: PropTypes.func
+};

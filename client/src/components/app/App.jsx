@@ -7,7 +7,7 @@ import allRoutes from '../navigation/routes';
 import AuthenticateRoute from '../navigation/authenticateRouteContainer';
 import { auth } from 'firebase/app';
 import PropTypes from 'prop-types';
-import LoadingSpinner from '../common/LoadingSpinner'
+import LoadingSpinner from '../common/LoadingSpinner';
 
 const mapOverRoutes = routes => (
   <>
@@ -24,7 +24,7 @@ const mapOverRoutes = routes => (
 
 const App = props => {
 
-  const [authReady, setAuthReady] = useState(false)
+  const [authReady, setAuthReady] = useState(false);
 
   auth().onAuthStateChanged(user => {
     if (user) {
@@ -37,11 +37,11 @@ const App = props => {
           roleName: token.claims.roleName,
         };
         props.updateCurrentUser({ ...user, ...customClaims });
-        setAuthReady(true)
+        setAuthReady(true);
       });
     } else {
       props.updateCurrentUser(null);
-      setAuthReady(true)
+      setAuthReady(true);
     }
   });
 

@@ -3,9 +3,8 @@ import InformationPage from './InformationPage';
 import { fetchPages } from '../../../api/pages';
 import { fetchExec } from '../../../api/users';
 
-
 const mapDispatchToProps = dispatch => ({
-  fetchPages: (pageName) => dispatch(fetchPages(pageName)),
+  fetchPages: pageName => dispatch(fetchPages(pageName)),
   fetchExec: () => dispatch(fetchExec()),
 });
 
