@@ -11,7 +11,7 @@ workflows:
           #   branches:
           #     only:
           #       - master
-          
+
       - install_function_dependencies
       - deploy_to_firebase_functions:
           requires:
@@ -34,8 +34,8 @@ jobs:
       - run:
           name: Installations 
           command: |
+            echo git log --format=oneline -n 1 $CIRCLE_SHA1
             npm ci
-            echo ${git log --format=oneline -n 1 $CIRCLE_SHA1}
       - run:
           name: Run Tests
           command: npm run test
