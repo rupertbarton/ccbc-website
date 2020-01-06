@@ -47,7 +47,7 @@ jobs:
       - image: circleci/node:10.15.1
     steps:
       - attach_workspace:
-          at: ~/ccbc
+          at: ~/
       - run: 
           name: Deploy to firebase
           command: | 
