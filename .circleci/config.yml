@@ -49,10 +49,10 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - ccbc/client
+            - ccbc/
 
   deploy_to_firebase_hosting:
-    working_directory: ~/ccbc/client
+    working_directory: ~/ccbc/
     docker:
       - image: circleci/node:10.15.1
     steps:
@@ -61,6 +61,7 @@ jobs:
       - run: 
           name: Deploy to firebase
           command: | 
+            npm ci
             npx firebase deploy --only hosting --token "$FIREBASE_TOKEN" 
 
   install_function_dependencies:
@@ -82,7 +83,7 @@ jobs:
             - ccbc/
 
   deploy_to_firebase_functions:
-    working_directory: ~/ccbc/functions
+    working_directory: ~/ccbc/
     docker:
       - image: circleci/node:10.15.1
     steps:
@@ -90,5 +91,6 @@ jobs:
           at: ~/
       - run: 
           name: Deploy to firebase
-          command: | 
+          command: |
+            npm ci
             npx firebase deploy --only functions --token "$FIREBASE_TOKEN" 
