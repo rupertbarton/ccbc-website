@@ -7,8 +7,6 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import firebaseApp from './api/firebaseApp'; // eslint-disable-line no-unused-vars
-
 const store = configureStore();
 
 const theme = createMuiTheme({
