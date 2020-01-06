@@ -42,13 +42,13 @@ jobs:
             - ccbc
 
   deploy_to_firebase:
-    working_directory: ~/ccbc/
+    working_directory: ~/ccbc/client
     docker:
       - image: circleci/node:10.15.1
     steps:
       - attach_workspace:
-          at: .
+          at: ~/ccbc
       - run: 
           name: Deploy to firebase
           command: | 
-            npx firebase deploy --only hosting --token "$FIREBASE_TOKEN" 
+            npx firebase deploy --token "$FIREBASE_TOKEN" 
