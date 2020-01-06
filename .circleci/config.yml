@@ -4,10 +4,18 @@ workflows:
   build:
     jobs:
       - build_and_test_client
-
-      - deploy_to_firebase:
+      - deploy_to_firebase_hosting:
           requires:
             - build_and_test_client
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
+          
+      - install_function_dependencies
+      - deploy_to_firebase_functions:
+          requires:
+            - install_function_dependencies
           # filters:
           #   branches:
           #     only:
@@ -27,6 +35,7 @@ jobs:
           name: Installations 
           command: |
             npm ci
+            echo ${git log --format=oneline -n 1 $CIRCLE_SHA1}
       - run:
           name: Run Tests
           command: npm run test
@@ -39,9 +48,9 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - ccbc
+            - ccbc/client
 
-  deploy_to_firebase:
+  deploy_to_firebase_hosting:
     working_directory: ~/ccbc/client
     docker:
       - image: circleci/node:10.15.1
@@ -51,4 +60,34 @@ jobs:
       - run: 
           name: Deploy to firebase
           command: | 
-            npx firebase deploy --token "$FIREBASE_TOKEN" 
+            npx firebase deploy --only hosting --token "$FIREBASE_TOKEN" 
+
+  install_function_dependencies:
+    working_directory: ~/ccbc/functions
+    docker:
+      - image: circleci/node:10.15.1
+        environment:
+          TZ: Europe/London
+    steps:
+      - checkout:
+          path: ~/ccbc
+      - run:
+          name: Installations 
+          command: |
+            npm ci
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - ccbc/
+
+  deploy_to_firebase_functions:
+    working_directory: ~/ccbc/functions
+    docker:
+      - image: circleci/node:10.15.1
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: 
+          name: Deploy to firebase
+          command: | 
+            npx firebase deploy --only functions --token "$FIREBASE_TOKEN" 
