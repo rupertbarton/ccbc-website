@@ -19,4 +19,4 @@
 
 it('Expects true to be true', () => {
   expect(true).toBe(true);
-})
+});
