@@ -7,14 +7,16 @@ import PropTypes from 'prop-types';
 import { pages, route, execRole } from '../../../types';
 
 const InformationPage = props => {
+
+  const { fetchPages, fetchExec, pages, execRoles } = props;
   useEffect(() => {
-    if (Object.keys(props.pages).length === 0) {
-      props.fetchPages();
+    if (Object.keys(pages).length === 0) {
+      fetchPages();
     }
-    if (Object.keys(props.execRoles).length === 0) {
-      props.fetchExec();
+    if (Object.keys(execRoles).length === 0) {
+      fetchExec();
     }
-  }, [props.fetchPages, props.fetchExec]);
+  }, [fetchPages, fetchExec, pages, execRoles]);
 
   const getHtmlString = () => {
     const htmlString = fp.flow(fp.get(props.route.name),

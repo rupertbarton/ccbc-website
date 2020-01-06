@@ -7,15 +7,16 @@ import { pages, execRole } from '../../../types';
 const ModifyContentPage = props => {
   const [hasFetchingStarted, setHasFethcingStarted] = useState(false);
 
+  const { pages, execRoles, fetchPages, fetchExec } = props;
   useEffect(() => {
-    if (Object.keys(props.pages).length === 0) {
-      props.fetchPages();
+    if (Object.keys(pages).length === 0) {
+      fetchPages();
     }
-    if (Object.keys(props.execRoles).length === 0) {
-      props.fetchExec();
+    if (Object.keys(execRoles).length === 0) {
+      fetchExec();
     }
     setHasFethcingStarted(true);
-  }, []);
+  }, [pages, execRoles, fetchPages, fetchExec]);
 
   return (
     <>
