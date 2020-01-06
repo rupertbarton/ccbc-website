@@ -38,5 +38,5 @@ export const saveMultiplePages = pages => {
   const arrayOfPageUpdatePromises = Object.keys(pages).filter(id => pages[id].changed).map(id =>
     savePage({ id, content: pages[id].content })
   );
-  return Promise.all(arrayOfPageUpdatePromises);
+  return Promise.all(arrayOfPageUpdatePromises);  //TODO make this a transaction thingy
 };

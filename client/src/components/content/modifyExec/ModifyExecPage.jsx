@@ -10,7 +10,7 @@ import { execRole, member } from '../../../types';
 const ModifyExecPage = props => {
   const [changes, setChanges] = useState({});
 
-  const { members, fetchMembers, execRoles, fetchExec } = props
+  const { members, fetchMembers, execRoles, fetchExec } = props;
   useEffect(() => {
     if (Object.keys(members).length === 0) {
       fetchMembers();
