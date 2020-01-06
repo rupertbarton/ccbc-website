@@ -1,0 +1,6 @@
+{
+  "name": "ccbc-website",
+  "devDependencies": {
+    "firebase-tools": "^7.11.0"
+  }
+}
