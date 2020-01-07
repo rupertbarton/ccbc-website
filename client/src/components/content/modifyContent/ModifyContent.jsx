@@ -9,24 +9,22 @@ import { pages, execRole } from '../../../types';
 const ModifyContent = props => {
   const [showPreview, setShowPreview] = useState(false);
   const [pages, setPages] = useState(props.pages);
-  const [randomTimout, setRandomTimeout] = useState(true);  //this is required as Quill is a partially controlled component, and passing it new props counts as a change, and does not cause a rerender 😢
-  // const [props.selectedPage, setprops.SelectedPage] = useState(() => pages.Home ? 'Home' : '');
 
-  const handleTextEditorChange = value => {
-    setPages({
-      ...pages,
-      [props.selectedPage]: {
-        ...pages[props.selectedPage],
-        changed: true,
-        content: value
-      }
-    });
+  const handleTextEditorChange = (value, _, source) => {
+    if (source === 'user') {
+      setPages({
+        ...pages,
+        [props.selectedPage]: {
+          ...pages[props.selectedPage],
+          changed: true,
+          content: value
+        }
+      });
+    }
   };
 
   const handleSelectChange = event => {
-    setRandomTimeout(false);
     props.updatePageToEdit(event.target.value);
-    setTimeout(() => { setRandomTimeout(true); }, 1);
   };
 
   const handleSubmitSingle = () => {
@@ -60,7 +58,7 @@ const ModifyContent = props => {
         label="Select page name"
         onChange={handleSelectChange} />
 
-      {!!props.selectedPage && randomTimout &&
+      {!!props.selectedPage &&
         <>
           <SaveButton label={showPreview ? 'Modify text' : 'Show Preview'}
             onClick={handleShowPreview} />
