@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
+import * as R from 'ramda';
 import { Typography } from '@material-ui/core';
 import LoadingSpinner from '../../common/LoadingSpinner';
-import fp from 'lodash/fp';
 import formatStringToHtml from '../../../util/stringToHtml';
 import PropTypes from 'prop-types';
 import { pages, route, execRole } from '../../../types';
@@ -19,10 +19,7 @@ const InformationPage = props => {
   }, [fetchPages, fetchExec, pages, execRoles]);
 
   const getHtmlString = () => {
-    const htmlString = fp.flow(fp.get(props.route.name),
-      fp.get('content')
-    )(props.pages) || '';
-
+    const htmlString = R.path([props.route.name, 'content'], props.pages) || '';
     return formatStringToHtml(htmlString, props.execRoles);
   };
 
